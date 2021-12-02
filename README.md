@@ -1,2 +1,2 @@
 # DomusPopuli-App
-Pax intrantibus, salus exeuntibus
+_Pax intrantibus, salus exeuntibus_
