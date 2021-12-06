@@ -1,16 +1,17 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
+import Check from './check';
 
 const app = () => {
   return (
     <View style={styles.container}>
       <Image 
-        source={require('./image/logo.png')} 
+       source={require('./image/logo.png')} 
         style={styles.title}
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
