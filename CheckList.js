@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import { Text, View, Image, StyleSheet, TextInput, 
+TouchableHighlight } from 'react-native';
 
 const CheckList = () => {
-  return (
+    return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
@@ -34,12 +35,20 @@ const CheckList = () => {
           </View>
         </View>
       </View>
-      <View style={styles.footer}>
+      <TouchableHighlight 
+        style={styles.footer} 
+        underlayColor="#e65a5a"
+        onPress={_onPressButton}>
         <Text style={styles.boldWhite}>다음</Text>
-      </View>
+      </TouchableHighlight>
     </View>
   );
 }
+
+const _onPressButton = function() {
+    alert('You tapped the button!')
+}
+
 
 const styles = StyleSheet.create({
   imageButton: {
