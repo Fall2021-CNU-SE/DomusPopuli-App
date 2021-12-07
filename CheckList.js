@@ -5,39 +5,56 @@ const CheckList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text>뒤로가기</Text>
+        <Image 
+          source={require('./image/left_arrow.png')}
+          style={styles.imageButton}
+        />
+        <Text style={styles.black}>체크리스트 작성</Text>
+        <Image 
+          source={require('./image/x.png')}
+          style={styles.imageButton}
+        />
       </View>
-      <View style={styles.title}>
-          <Text style={styles.middleBlack}>
+        <View style={styles.title}>
+          <Text style={styles.black}>
             예산과 직장(학교)위치를 입력해 주세요
           </Text>
         </View>
       <View style={styles.content}>
-        <View style={styles.row}>
-          <Text style={styles.rowText}>예산</Text>
-          <TextInput style={styles.input}/>
-          <Text style={styles.rowText}>만원</Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.rowText}>직장위치</Text>
-          <TextInput style={styles.input}/>
-          <Text style={styles.rowText}></Text>
+        <View style={styles.table}>
+          <View style={styles.row}>
+            <Text style={styles.rowText}>예산</Text>
+            <TextInput style={styles.input}/>
+            <Text style={styles.rowText}>만원</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.rowText}>직장위치</Text>
+            <TextInput style={styles.input}/>
+            <Text style={styles.rowText}></Text>
+          </View>
         </View>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.bigWhite}>다음</Text>
+        <Text style={styles.boldWhite}>다음</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  middleBlack: {
+  imageButton: {
+    width: 30,
+    height: 30,
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  black: {
     fontSize: 20,
   },
-  bigWhite: {
-    fontSize: 30, 
+  boldWhite: {
+    fontSize: 20, 
     color: "white",
+    fontWeight: "bold",
  },
   container: {
     flex: 1,
@@ -48,16 +65,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    flex: 5,
+    flex: 7,
     marginTop: 20,
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
   },
   header: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    flex: 1.1,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    paddingBottom: 15,
+    borderBottomWidth: 0.3,
+    borderBottomColor: "#DCDCDC",
   },
   footer: {
     flex: 1,
@@ -70,8 +91,11 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderColor: "#D43736",
     borderRadius: 10,
-    width: "50%",
+    width: "30%",
     fontSize: 20,
+  },
+  table: {
+    flex: 1,
   },
   row: {
     marginTop: 10,
