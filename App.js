@@ -1,16 +1,21 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import CheckList from './CheckList';
-
+import PreferenceSurvey from './PreferenceSurvey';
+import Inputbugetandloc from './Inputbugetandloc';
+import RoomList from './RoomList';
 const app = () => {
   return (
 //    <View style={styles.container}>
-//      <Image 
-//       source={require('./image/logo.png')} 
-//        style={styles.title}
-//      />
+    //  <Image 
+    //   source={require('./image/logo.png')} 
+    //    style={styles.title}
+    //  />
 //    </View>
-    <CheckList/>
+    // <CheckList/>
+    // <PreferenceSurvey/>
+    // <Inputbugetandloc/>
+    <RoomList/>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
 
-const CheckList = () => {
+const PreferenceSurvey = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -9,30 +9,20 @@ const CheckList = () => {
           source={require('./image/left_arrow.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.black}>체크리스트 작성</Text>
+        <Text style={styles.black}>선호도 조사에 대한 의사 확인</Text>
         <Image 
           source={require('./image/x.png')}
           style={styles.imageButton}
         />
       </View>
-        <View style={styles.title}>
-          <Text style={styles.black}>
-            예산과 직장(학교)위치를 입력해 주세요
-          </Text>
+        <View style={styles.title}>        
         </View>
+
       <View style={styles.content}>
-        <View style={styles.table}>
-          <View style={styles.topRow}>
-            <Text style={styles.rowText}>예산</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.rowText}>만원</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.rowText}>직장위치</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
-          </View>
-        </View>
+        <Text style={styles.contentText}>{'사용자의 기호를 맞추기 위해 선호도를 입력해주세요. 생략하면 다음에 입력할 수 있습니다.'}</Text>
+      </View>
+      <View style={styles.skip}>
+        <Text style={styles.skipText}>생략하기</Text>
       </View>
       <View style={styles.footer}>
         <Text style={styles.boldWhite}>다음</Text>
@@ -50,6 +40,14 @@ const styles = StyleSheet.create({
   },
   black: {
     fontSize: 20,
+    fontWeight: "bold",
+  },
+  contentText: {
+    paddingLeft: 30,
+    paddingRight: 30,
+    fontSize: 20,
+    lineHeight: 40,
+    textAlign:'center'
   },
   boldWhite: {
     fontSize: 20, 
@@ -80,6 +78,21 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.3,
     borderBottomColor: "#DCDCDC",
   },
+  skip: {
+    borderBottomWidth: 1.5,
+    paddingBottom: 3,
+    borderBottomColor: "gray",
+    marginBottom: 10,
+    width: 75,
+    position: 'relative',
+    left: '40.5%',
+  },
+  skipText: {
+    textAlign: 'center',
+    fontSize: 20, 
+    color: "gray",
+    fontWeight: "bold",
+  },
   footer: {
     flex: 1,
     justifyContent: "center",
@@ -97,40 +110,18 @@ const styles = StyleSheet.create({
   table: {
     flex: 1,
   },
-  row:{
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
+  row: {
+    marginTop: 10,
+    marginBottom: 10,
     flexDirection: "row",
     alignContent: "space-around",
     justifyContent: "space-between",
-    borderLeftWidth: 0.3,
-    borderRightWidth: 0.3,
-    borderBottomWidth: 0.3,
-    borderStyle: "solid",
-    // borderColor: "#DCDCDC",
-    borderColor: "white",
-    
-  },
-  topRow: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
-    flexDirection: "row",
-    alignContent: "space-around",
-    justifyContent: "space-between",
-    borderWidth: 0.3,
-    borderStyle: "solid",
-    // borderColor: "#DCDCDC",
-    borderColor: "white",
   },
   rowText: {
-    width: "21%",
+    width: "20%",
     fontSize: 20,
     textAlign: "center",
   },
 });
 
-export default CheckList;
+export default PreferenceSurvey;

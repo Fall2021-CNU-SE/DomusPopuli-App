@@ -1,17 +1,17 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
 
-const CheckList = () => {
+const RoomList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
-          source={require('./image/left_arrow.png')}
+          source={require('./image/User.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.black}>체크리스트 작성</Text>
+        <Text style={styles.black}>방 목록</Text>
         <Image 
-          source={require('./image/x.png')}
+          source={require('./image/plus.png')}
           style={styles.imageButton}
         />
       </View>
@@ -23,19 +23,12 @@ const CheckList = () => {
       <View style={styles.content}>
         <View style={styles.table}>
           <View style={styles.topRow}>
-            <Text style={styles.rowText}>예산</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.rowText}>만원</Text>
+            
           </View>
           <View style={styles.row}>
-            <Text style={styles.rowText}>직장위치</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
+            
           </View>
         </View>
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.boldWhite}>다음</Text>
       </View>
     </View>
   );
@@ -133,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckList;
+export default RoomList;
