@@ -4,6 +4,9 @@ import CheckList from './CheckList';
 import PreferenceSurvey from './PreferenceSurvey';
 import Inputbugetandloc from './Inputbugetandloc';
 import RoomList from './RoomList';
+import PreferenceFacil from './PreferenceFacil';
+import RoomMade from './RoomMade';
+
 const app = () => {
   return (
 //    <View style={styles.container}>
@@ -15,7 +18,9 @@ const app = () => {
     // <CheckList/>
     // <PreferenceSurvey/>
     // <Inputbugetandloc/>
-    <RoomList/>
+    // <RoomList/>
+    // <PreferenceFacil/>
+    <RoomMade/>
   );
 };
 

@@ -10,5 +10,6 @@ npm-debug.*
 *.orig.*
 web-build/
 
+IInterface.js
 # macOS
 .DS_Store
