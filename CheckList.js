@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
 
-const Check = () => {
+const CheckList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Check;
+export default CheckList;

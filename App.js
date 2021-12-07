@@ -1,15 +1,16 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import Check from './check';
+import CheckList from './CheckList';
 
 const app = () => {
   return (
-    <View style={styles.container}>
-      <Image 
-       source={require('./image/logo.png')} 
-        style={styles.title}
-      />
-    </View>
+//    <View style={styles.container}>
+//      <Image 
+//       source={require('./image/logo.png')} 
+//        style={styles.title}
+//      />
+//    </View>
+    <CheckList/>
   );
 };
 
