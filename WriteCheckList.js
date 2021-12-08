@@ -1,29 +1,28 @@
-import React, {useState} from 'react';
-import {Text, View, Image, StyleSheet, FlatList} from 'react-native';
+import React from 'react';
+import {Text, View, Image, StyleSheet} from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const PreferenceFacil = () => {
-  const [isSelected, setSelection] = useState(false);
+const WriteCheckList = () => {
   return (
     <View style={styles.container}>
-      
       <View style={styles.header}>
         <Image 
           source={require('./image/left_arrow.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.black}>선호 시설 입력</Text>
+        <Text style={styles.black}>체크리스트 작성 - 화장실</Text>
         <Image 
           source={require('./image/x.png')}
           style={styles.imageButton}
         />
       </View>
-      
-      <View style={styles.title}>
-        <Text style={styles.black}>{'가장 중요하다고 생각하는 시설을 체크해주세요. \n(최대 3 가지)'}
-        </Text>
-      </View>
-  
+        <View style={styles.title}>
+          <Text style={styles.titleText}>{'화장실 작성 진행률 1/3\n\n\n'}</Text>
+          <View style={styles.checklistBox}>
+            <Text style={styles.black}>{'변기와 세면대 물을 동시에 사용해보세요.\n수압이 어떤가요 ?\n'}</Text>
+          </View>
+        </View>
+        
       <View style={styles.content}>
         <View style={styles.row}>
           <View style={styles.center}>
@@ -33,8 +32,8 @@ const PreferenceFacil = () => {
             onPress={(isChecked) => {}} 
             />
           </View>
-          <View style={styles.center}>
-            <Text style={styles.rowText}> 병원 </Text>
+          <View style={styles.centerBox}>
+            <Text style={styles.rowText}>매우 좋음</Text>
           </View>
         </View>
 
@@ -46,8 +45,8 @@ const PreferenceFacil = () => {
             onPress={(isChecked) => {}} 
             />
           </View>
-          <View style={styles.center}>
-            <Text style={styles.rowText}> 대형마트 </Text>
+          <View style={styles.centerBox}>
+            <Text style={styles.rowText}>좋음</Text>
           </View>
         </View>
 
@@ -59,8 +58,8 @@ const PreferenceFacil = () => {
             onPress={(isChecked) => {}} 
             />
           </View>
-          <View style={styles.center}>
-            <Text style={styles.rowText}> 편의점 </Text>
+          <View style={styles.centerBox}>
+            <Text style={styles.rowText}>보통</Text>
           </View>
         </View>
 
@@ -72,8 +71,8 @@ const PreferenceFacil = () => {
             onPress={(isChecked) => {}} 
             />
           </View>
-          <View style={styles.center}>
-            <Text style={styles.rowText}> 지하철 </Text>
+          <View style={styles.centerBox}>
+            <Text style={styles.rowText}>나쁨</Text>
           </View>
         </View>
 
@@ -85,25 +84,12 @@ const PreferenceFacil = () => {
             onPress={(isChecked) => {}} 
             />
           </View>
-          <View style={styles.center}>
-            <Text style={styles.rowText}> 기차역 </Text>
-          </View>
-        </View>
-
-        <View style={styles.row}>
-          <View style={styles.center}>
-            <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
-            onPress={(isChecked) => {}} 
-            />
-          </View>
-          <View style={styles.center}>
-            <Text style={styles.rowText}> 빨래방 </Text>
+          <View style={styles.centerBox}>
+            <Text style={styles.rowText}>매우 나쁨</Text>
           </View>
         </View>
       </View>
-
+      
       <View style={styles.footer}>
         <Text style={styles.boldWhite}>다음</Text>
       </View>
@@ -125,6 +111,10 @@ const styles = StyleSheet.create({
     textAlign:"center",
     fontSize: 20,
   },
+  titleText:{
+    textAlign:"center",
+    fontSize: 17,
+  },
   boldWhite: {
     fontSize: 20, 
     color: "white",
@@ -141,6 +131,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
+    justifyContent: "center",
   },
   header: {
     flex: 1.1,
@@ -157,8 +148,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#D43736",
   },
-  row:{
+  checklistBox:{
     flex:1,
+    justifyContent: "flex-end",
+  },
+  row:{
+    height:80,
     flexDirection: "row",
   },
   rowText: {
@@ -167,8 +162,12 @@ const styles = StyleSheet.create({
   },
   center:{
     flex:1,
+    alignItems: "flex-end",
+  },
+  centerBox:{
+    flex:2,
     alignItems: "center",
   },
 });
 
-export default PreferenceFacil;
+export default WriteCheckList;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const RoomMade = () => {
+const CheckMonthly = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -10,7 +10,7 @@ const RoomMade = () => {
           source={require('./image/left_arrow.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.black}>방 생성</Text>
+        <Text style={styles.black}>월세 선택</Text>
         <Image 
           source={require('./image/x.png')}
           style={styles.imageButton}
@@ -18,45 +18,47 @@ const RoomMade = () => {
       </View>
 
       <View style={styles.title}>
-        <Text style={styles.black}>진행률 0/5</Text>
+        <Text style={styles.black}>진행률 1/5</Text>
       </View>
       
       <View style={styles.content}>
         <Text style={styles.black}>방위치, 크기를 입력해 주세요.</Text>
         <View style={styles.table}>
           <View style={styles.row}>
-            <Text style={styles.rowText}>방 크기</Text>
+            <Text style={styles.rowText}>월세</Text>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}>평</Text>
+            <Text style={styles.rowText}>만원</Text>
           </View>
           <View style={styles.row}>
-            <Text style={styles.rowText}>방 위치</Text>
+            <Text style={styles.rowText}>보증금</Text>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
+            <Text style={styles.rowText}>만원</Text>
           </View>
           <View style={styles.row}>
-            <Text style={styles.rowText}>상세주소</Text>
+            <Text style={styles.rowText}>관리비</Text>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
+            <Text style={styles.rowText}>만원</Text>
           </View>
         </View>
 
-        <View style={styles.table}>
-          <Text style={styles.black}>{'전세, 월세를 체크해주세요.\n'}</Text>
-          <View style={styles.row}>
-            <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
-            onPress={(isChecked) => {}} 
-            />
-            <Text style={styles.chooseText}>전세</Text>
+        <View style={styles.underTable}>
+          <View style={styles.boxRow}>
+            <View style={styles.Leftbox}>
+              <Text style={styles.boxText}>집안</Text>
+            </View>
+            <View style={styles.Rightbox}>
+              <Text style={styles.boxText}>화장실</Text>
+            </View>
+          </View>
 
-            <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
-            onPress={(isChecked) => {}} 
-            />
-            <Text style={styles.chooseText}>월세</Text>
+          <View style={styles.boxRow}>
+            <View style={styles.Leftbox}>
+                <Text style={styles.boxText}>주방</Text>
+            </View>
+
+            <View style={styles.Rightbox}>
+                <Text style={styles.boxText}>기타</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -117,6 +119,9 @@ const styles = StyleSheet.create({
   table: {
     flex: 1,
   },
+  underTable: {
+    flex: 1.5,
+  },
   input: {
     borderWidth: 2,
     borderStyle: "solid",
@@ -144,10 +149,44 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
-  chooseText:{
-    width: "21%",
-    fontSize: 20,
+  boxRow:{
+    flex:1,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexDirection: "row",
+    alignContent: "space-around",
+    justifyContent: "space-between",
+    borderColor: "white",
+    borderRadius:15,
+  },
+  Leftbox:{
+    flex:1,
+    marginRight:30,
+    marginBottom:10,
+    marginTop:10,
+    justifyContent: "center",
+    backgroundColor:"#D43736",
+    borderColor:"white",
+    borderRadius:10,
+  },
+  Rightbox:{
+    flex:1,
+    marginLeft:10,
+    marginBottom:10,
+    marginTop:10,
+    justifyContent: "center",
+    backgroundColor:"#D43736",
+    borderColor:"white",
+    borderRadius:10,
+},
+  boxText:{
+    fontSize: 20, 
+    color: "white",
+    fontWeight: "bold",
+    textAlign:"center",
   },
 });
 
-export default RoomMade;
+export default CheckMonthly;

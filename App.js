@@ -1,11 +1,18 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import CheckList from './CheckList';
+import MakeAccount from './MakeAccount';
+import Login from './Login';
 import PreferenceSurvey from './PreferenceSurvey';
 import Inputbugetandloc from './Inputbugetandloc';
 import RoomList from './RoomList';
 import PreferenceFacil from './PreferenceFacil';
 import RoomMade from './RoomMade';
+import CheckMonthly from './CheckMonthly';
+import CheckLease from './CheckLease';
+import WriteCheckList from './WriteCheckList';
+import ScoreLoading from './ScoreLoading';
+import DetailScore from './DetailScore';
 
 const app = () => {
   return (
@@ -16,11 +23,18 @@ const app = () => {
     //  />
 //    </View>
     // <CheckList/>
+    <MakeAccount/>
+    // <Login/>
     // <PreferenceSurvey/>
     // <Inputbugetandloc/>
-    // <RoomList/>
     // <PreferenceFacil/>
-    <RoomMade/>
+    // <RoomList/>
+    // <RoomMade/>
+    // <CheckMonthly/>
+    // <CheckLease/>
+    // <WriteCheckList/>
+    // <ScoreLoading/>
+    // <DetailScore/>
   );
 };
 

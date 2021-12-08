@@ -1,15 +1,15 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import { Text, View, Image, StyleSheet} from 'react-native';
 
-const RoomList = () => {
+const DetailScore = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
-          source={require('./image/User.png')}
+          source={require('./image/left_arrow.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.headerText}>방 목록</Text>
+        <Text style={styles.black}>상세 점수 조회</Text>
         <Image 
           source={require('./image/plus.png')}
           style={styles.imageButton}
@@ -18,25 +18,33 @@ const RoomList = () => {
 
       <View style={styles.content}> 
         <View style={styles.tableHeader}>
-            <View style={styles.tableHeaderRoomName}>
-              <Text style={styles.tableHeaderText}>방 이름</Text>
-            </View>
-            <View style={styles.tableHeaderScore}>
-              <Text style={styles.tableHeaderText}> 점수 </Text>
-            </View>
+          <View style={styles.tableHeaderRoomName}>
+            <Text style={styles.tableHeaderText}>카테고리</Text>
+          </View>
+          <View style={styles.tableHeaderScore}>
+            <Text style={styles.tableHeaderText}>점수</Text>
+          </View>
         </View>
 
 
-{/* scoll view 용우화이팅*/}
         <View style={styles.table}>
           <View style={styles.row}>
-						<View style={styles.tableRoomName}>
-							<Text style={styles.rowText}>궁동 방</Text>
-						</View>
-						<View style={styles.tableScore}>
-							<Text style={styles.rowText}> 98 점</Text>
-						</View>
+			      <View style={styles.tableRoomName}>
+			        <Text style={styles.rowText}>집안</Text>
+			      </View>
+			      <View style={styles.tableScore}>
+			        <Text style={styles.rowText}> 48 점</Text>
+			      </View>
           </View>
+
+          <View style={styles.row}>
+			      <View style={styles.tableRoomName}>
+			        <Text style={styles.rowText}>화장실 등등등</Text>
+			      </View>
+			      <View style={styles.tableScore}>
+			        <Text style={styles.rowText}> 98 점</Text>
+			      </View>
+          </View>					
         </View>
       </View>
     </View>
@@ -53,10 +61,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
   },
-  headerText: {
-    fontSize: 40,
-    fontWeight: "bold",
-  },
   title: {
     flex: 2,
     justifyContent: "center",
@@ -70,28 +74,28 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   tableHeader:{
-		flexDirection: "row",
-		flex: 1,
+	flexDirection: "row",
+	flex: 1,
   },
   tableHeaderText:{
-		fontSize:20,
-		color:"white",
-		fontWeight:"bold",
-		textAlign:"center",
+	fontSize:20,
+	color:"white",
+	fontWeight:"bold",
+	textAlign:"center",
   },
   tableHeaderRoomName:{
-		backgroundColor:"#D43736",
-		borderRightWidth:1,
-		borderRightColor: "white",
-		flex: 3,
-		borderRadius:20,
-		justifyContent: "center",
+    backgroundColor:"#D43736",
+    borderRightWidth:1,
+    borderRightColor: "white",
+    flex: 3,
+    borderRadius:20,
+    justifyContent: "center",
   },
   tableHeaderScore:{
     backgroundColor: "#D43736",
-		borderRadius:20,
-		flex: 1,
-		justifyContent: "center",
+    borderRadius:20,
+    flex: 1,
+    justifyContent: "center",
 },
   header: {
     flex: 1,
@@ -102,19 +106,23 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.3,
     borderBottomColor: "#DCDCDC",
   },
+  black: {
+    fontSize: 20,
+    textAlign:"center",
+  },
   table: {
     flex: 9,
   },
-	tableRoomName:{
-		flex: 3,
-		borderRightWidth:1,
-		borderRightColor: "black",
+  tableRoomName:{
+    flex: 3,
+    borderRightWidth:1,
+    borderRightColor: "black",
 	},
-	tableScore:{
-		flex:1,
+  tableScore:{
+    flex:1,
 	},
   row:{
-		height:50,
+    height:50,
     // paddingLeft: 20,
     // paddingRight: 20,
     // paddingBottom: 20,
@@ -127,25 +135,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.3,
     borderStyle: "solid",
     // borderColor: "#DCDCDC",
-    borderColor: "white",
+    borderColor: "white",    
   },
-  // topRow: {
-  //   paddingLeft: 20,
-  //   paddingRight: 20,
-  //   paddingTop: 20,
-  //   paddingBottom: 20,
-  //   flexDirection: "row",
-  //   alignContent: "space-around",
-  //   justifyContent: "space-between",
-  //   borderWidth: 0.3,
-  //   borderStyle: "solid",
-  //   // borderColor: "#DCDCDC",
-  //   borderColor: "white",
-  // },
   rowText: {
     fontSize: 20,
     textAlign: "center",
   },
 });
 
-export default RoomList;
+export default DetailScore;

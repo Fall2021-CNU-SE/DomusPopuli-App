@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import { Text, View, Image, StyleSheet} from 'react-native';
 
 const PreferenceSurvey = () => {
   return (
@@ -10,13 +10,13 @@ const PreferenceSurvey = () => {
           style={styles.imageButton}
         />
         <Text style={styles.black}>선호도 조사에 대한 의사 확인</Text>
-        <Image 
+        <Image
           source={require('./image/x.png')}
           style={styles.imageButton}
         />
       </View>
-        <View style={styles.title}>        
-        </View>
+      
+      <View style={styles.title}></View>
 
       <View style={styles.content}>
         <Text style={styles.contentText}>{'사용자의 기호를 맞추기 위해 선호도를 입력해주세요. 생략하면 다음에 입력할 수 있습니다.'}</Text>
@@ -98,29 +98,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#D43736",
-  },
-  input: {
-    borderWidth: 2,
-    borderStyle: "solid",
-    borderColor: "#D43736",
-    borderRadius: 10,
-    width: "30%",
-    fontSize: 20,
-  },
-  table: {
-    flex: 1,
-  },
-  row: {
-    marginTop: 10,
-    marginBottom: 10,
-    flexDirection: "row",
-    alignContent: "space-around",
-    justifyContent: "space-between",
-  },
-  rowText: {
-    width: "20%",
-    fontSize: 20,
-    textAlign: "center",
   },
 });
 
