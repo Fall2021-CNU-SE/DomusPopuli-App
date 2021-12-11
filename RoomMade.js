@@ -1,8 +1,11 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import { Text, View, Image, StyleSheet, TextInput,
+TouchableWithoutFeedback } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const RoomMade = () => {
+const RoomMade = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -11,10 +14,14 @@ const RoomMade = () => {
           style={styles.imageButton}
         />
         <Text style={styles.black}>방 생성</Text>
-        <Image 
-          source={require('./image/x.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.popToTop() }
+        >
+          <Image 
+            source={require('./image/x.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
       </View>
 
       <View style={styles.title}>

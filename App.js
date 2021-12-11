@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RoomList from './RoomList'
 import CheckList from './CheckList'
+import RoomMade from './RoomMade'
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,10 @@ const app = () => {
         <Stack.Screen
           name="CheckList"
           component={CheckList}
+        />
+        <Stack.Screen
+          name="RoomMade"
+          component={RoomMade}
         />
       </Stack.Navigator>
     </NavigationContainer>

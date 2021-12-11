@@ -13,10 +13,14 @@ const RoomList = ({ navigation }) => {
           style={styles.imageButton}
         />
         <Text style={styles.headerText}>방 목록</Text>
-        <Image 
-          source={require('./image/plus.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.navigate("RoomMade") }
+        >
+          <Image 
+            source={require('./image/plus.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
       </View>
 
       <View style={styles.content}> 
