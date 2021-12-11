@@ -1,30 +1,13 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import CheckList from './CheckList';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Logo from './Logo'
 
 const app = () => {
   return (
-//    <View style={styles.container}>
-//      <Image 
-//       source={require('./image/logo.png')} 
-//        style={styles.title}
-//      />
-//    </View>
-    <CheckList/>
+    <Logo/>  
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    width: 225,
-    height: 225,
-    resizeMode: "contain",
-  }
-});
 
 export default app;
