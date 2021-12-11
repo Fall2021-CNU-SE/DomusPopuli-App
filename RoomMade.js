@@ -1,54 +1,72 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput, 
-TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const CheckList = () => {
-    return (
+const RoomMade = () => {
+  return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
           source={require('./image/left_arrow.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.black}>체크리스트 작성</Text>
+        <Text style={styles.black}>방 생성</Text>
         <Image 
           source={require('./image/x.png')}
           style={styles.imageButton}
         />
       </View>
-        <View style={styles.title}>
-          <Text style={styles.black}>
-            예산과 직장(학교)위치를 입력해 주세요
-          </Text>
-        </View>
+
+      <View style={styles.title}>
+        <Text style={styles.black}>진행률 0/5</Text>
+      </View>
+      
       <View style={styles.content}>
+        <Text style={styles.black}>방위치, 크기를 입력해 주세요.</Text>
         <View style={styles.table}>
-          <View style={styles.topRow}>
-            <Text style={styles.rowText}>예산</Text>
+          <View style={styles.row}>
+            <Text style={styles.rowText}>방 크기</Text>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}>만원</Text>
+            <Text style={styles.rowText}>평</Text>
           </View>
           <View style={styles.row}>
-            <Text style={styles.rowText}>직장위치</Text>
+            <Text style={styles.rowText}>방 위치</Text>
+            <TextInput style={styles.input}/>
+            <Text style={styles.rowText}></Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.rowText}>상세주소</Text>
             <TextInput style={styles.input}/>
             <Text style={styles.rowText}></Text>
           </View>
         </View>
+
+        <View style={styles.table}>
+          <Text style={styles.black}>{'전세, 월세를 체크해주세요.\n'}</Text>
+          <View style={styles.row}>
+            <BouncyCheckbox
+            fillColor="red"
+            iconStyle={{ borderColor: "red" }}
+            onPress={(isChecked) => {}} 
+            />
+            <Text style={styles.chooseText}>전세</Text>
+
+            <BouncyCheckbox
+            fillColor="red"
+            iconStyle={{ borderColor: "red" }}
+            onPress={(isChecked) => {}} 
+            />
+            <Text style={styles.chooseText}>월세</Text>
+          </View>
+        </View>
       </View>
-      <TouchableHighlight 
-        style={styles.footer} 
-        underlayColor="#e65a5a"
-        onPress={_onPressButton}>
+      
+      <View style={styles.footer}>
         <Text style={styles.boldWhite}>다음</Text>
-      </TouchableHighlight>
+      </View>
     </View>
   );
 }
-
-const _onPressButton = function() {
-    alert('You tapped the button!')
-}
-
 
 const styles = StyleSheet.create({
   imageButton: {
@@ -59,6 +77,7 @@ const styles = StyleSheet.create({
   },
   black: {
     fontSize: 20,
+    textAlign:"center",
   },
   boldWhite: {
     fontSize: 20, 
@@ -95,6 +114,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#D43736",
   },
+  table: {
+    flex: 1,
+  },
   input: {
     borderWidth: 2,
     borderStyle: "solid",
@@ -102,9 +124,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "30%",
     fontSize: 20,
-  },
-  table: {
-    flex: 1,
   },
   row:{
     paddingLeft: 20,
@@ -118,21 +137,6 @@ const styles = StyleSheet.create({
     borderRightWidth: 0.3,
     borderBottomWidth: 0.3,
     borderStyle: "solid",
-    // borderColor: "#DCDCDC",
-    borderColor: "white",
-    
-  },
-  topRow: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
-    flexDirection: "row",
-    alignContent: "space-around",
-    justifyContent: "space-between",
-    borderWidth: 0.3,
-    borderStyle: "solid",
-    // borderColor: "#DCDCDC",
     borderColor: "white",
   },
   rowText: {
@@ -140,6 +144,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
+  chooseText:{
+    width: "21%",
+    fontSize: 20,
+  },
 });
 
-export default CheckList;
+export default RoomMade;

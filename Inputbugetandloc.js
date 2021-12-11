@@ -1,55 +1,48 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput, 
-TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
 
-const CheckList = () => {
+const Inputbugetandloc = () => {
     return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image 
-          source={require('./image/left_arrow.png')}
-          style={styles.imageButton}
-        />
-        <Text style={styles.black}>체크리스트 작성</Text>
-        <Image 
-          source={require('./image/x.png')}
-          style={styles.imageButton}
-        />
-      </View>
-        <View style={styles.title}>
-          <Text style={styles.black}>
-            예산과 직장(학교)위치를 입력해 주세요
-          </Text>
-        </View>
-      <View style={styles.content}>
-        <View style={styles.table}>
-          <View style={styles.topRow}>
-            <Text style={styles.rowText}>예산</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.rowText}>만원</Text>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Image 
+              source={require('./image/left_arrow.png')}
+              style={styles.imageButton}
+            />
+            <Text style={styles.black}>예산, 주소 입력</Text>
+            <Image 
+              source={require('./image/x.png')}
+              style={styles.imageButton}
+            />
           </View>
-          <View style={styles.row}>
-            <Text style={styles.rowText}>직장위치</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
+          
+          <View style={styles.title}>
+            <Text style={styles.black}>
+              예산과 직장(학교)위치를 입력해 주세요
+            </Text>
+          </View>
+          
+          <View style={styles.content}>
+            <View style={styles.table}>
+              <View style={styles.topRow}>
+                <Text style={styles.rowText}>예산</Text>
+                <TextInput style={styles.input}/>
+                <Text style={styles.rowText}>만원</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.rowText}>직장위치</Text>
+                <TextInput style={styles.input}/>
+                <Text style={styles.rowText}></Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.footer}>
+            <Text style={styles.boldWhite}>다음</Text>
           </View>
         </View>
-      </View>
-      <TouchableHighlight 
-        style={styles.footer} 
-        underlayColor="#e65a5a"
-        onPress={_onPressButton}>
-        <Text style={styles.boldWhite}>다음</Text>
-      </TouchableHighlight>
-    </View>
-  );
-}
-
-const _onPressButton = function() {
-    alert('You tapped the button!')
-}
-
-
+      );
+    }
+    
 const styles = StyleSheet.create({
   imageButton: {
     width: 30,
@@ -64,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     color: "white",
     fontWeight: "bold",
- },
+  },
   container: {
     flex: 1,
   },
@@ -118,9 +111,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 0.3,
     borderBottomWidth: 0.3,
     borderStyle: "solid",
-    // borderColor: "#DCDCDC",
     borderColor: "white",
-    
   },
   topRow: {
     paddingLeft: 20,
@@ -132,7 +123,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderWidth: 0.3,
     borderStyle: "solid",
-    // borderColor: "#DCDCDC",
     borderColor: "white",
   },
   rowText: {
@@ -142,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckList;
+export default Inputbugetandloc;

@@ -6,7 +6,7 @@ import Logo from './Logo'
 
 const app = () => {
   return (
-    <Logo/>  
+    <Logo/>
   );
 };
 
