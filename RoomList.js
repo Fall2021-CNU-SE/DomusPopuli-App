@@ -1,7 +1,10 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import { Text, View, Image, StyleSheet, TextInput,
+TouchableWithoutFeedback } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const RoomList = () => {
+const RoomList = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,9 +33,13 @@ const RoomList = () => {
 {/* scoll view 용우화이팅*/}
         <View style={styles.table}>
           <View style={styles.row}>
-						<View style={styles.tableRoomName}>
-							<Text style={styles.rowText}>궁동 방</Text>
-						</View>
+            <TouchableWithoutFeedback 
+              onPress={ () => navigation.navigate("CheckList") }
+            > 
+              <View style={styles.tableRoomName}>
+                <Text style={styles.rowText}>궁동 방</Text>
+              </View>
+            </TouchableWithoutFeedback>
 						<View style={styles.tableScore}>
 							<Text style={styles.rowText}> 98 점</Text>
 						</View>

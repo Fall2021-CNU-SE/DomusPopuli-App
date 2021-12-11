@@ -1,20 +1,30 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet, TextInput, 
-TouchableHighlight } from 'react-native';
+TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const CheckList = () => {
+const CheckList = ({ navigation }) => {
     return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image 
-          source={require('./image/left_arrow.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.goBack() }
+        >
+          <Image 
+            source={require('./image/left_arrow.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback> 
         <Text style={styles.black}>체크리스트 작성</Text>
-        <Image 
-          source={require('./image/x.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.popToTop() }
+        >
+          <Image 
+            source={require('./image/x.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback> 
       </View>
         <View style={styles.title}>
           <Text style={styles.black}>
@@ -38,7 +48,7 @@ const CheckList = () => {
       <TouchableHighlight 
         style={styles.footer} 
         underlayColor="#e65a5a"
-        onPress={_onPressButton}>
+        onPress={ () => navigation.push("CheckList") }>
         <Text style={styles.boldWhite}>다음</Text>
       </TouchableHighlight>
     </View>
@@ -67,6 +77,7 @@ const styles = StyleSheet.create({
  },
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
   title: {
     flex: 2,
