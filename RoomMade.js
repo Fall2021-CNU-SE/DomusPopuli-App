@@ -45,15 +45,15 @@ const RoomMade = () => {
           <Text style={styles.black}>{'전세, 월세를 체크해주세요.\n'}</Text>
           <View style={styles.row}>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
             <Text style={styles.chooseText}>전세</Text>
 
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
             <Text style={styles.chooseText}>월세</Text>
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
  },
   container: {
     flex: 1,
+    backgroundColor:"white",
   },
   title: {
     flex: 2,

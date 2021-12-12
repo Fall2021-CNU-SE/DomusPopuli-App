@@ -23,8 +23,8 @@ const app = () => {
     //  />
 //    </View>
     // <CheckList/>
-    <MakeAccount/>
-    // <Login/>
+    // <MakeAccount/>
+    <Login/>
     // <PreferenceSurvey/>
     // <Inputbugetandloc/>
     // <PreferenceFacil/>

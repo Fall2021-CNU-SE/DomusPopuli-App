@@ -54,6 +54,7 @@ const DetailScore = () => {
 const styles = StyleSheet.create({
 	container: {
     flex: 1,
+    backgroundColor:"white",
   },
   imageButton: {
     width: 30,

@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
  },
   container: {
     flex: 1,
+    backgroundColor:"white",
   },
   title: {
     flex: 2,

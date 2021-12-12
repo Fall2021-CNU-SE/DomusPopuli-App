@@ -27,8 +27,8 @@ const WriteCheckList = () => {
         <View style={styles.row}>
           <View style={styles.center}>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
           </View>
@@ -40,8 +40,8 @@ const WriteCheckList = () => {
         <View style={styles.row}>
           <View style={styles.center}>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
           </View>
@@ -53,8 +53,8 @@ const WriteCheckList = () => {
         <View style={styles.row}>
           <View style={styles.center}>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
           </View>
@@ -66,8 +66,8 @@ const WriteCheckList = () => {
         <View style={styles.row}>
           <View style={styles.center}>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
           </View>
@@ -79,8 +79,8 @@ const WriteCheckList = () => {
         <View style={styles.row}>
           <View style={styles.center}>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
           </View>
@@ -100,6 +100,7 @@ const WriteCheckList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"white",
   },
   imageButton: {
     width: 30,
