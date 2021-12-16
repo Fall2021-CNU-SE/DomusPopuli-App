@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const RoomList = ({ navigation }) => {
-  const [verified, setVeritied] = useState(false);
+  const [verified, setVeritied] = useState(true);
   return (
     <View style={styles.container}>
       <View style={styles.header}>

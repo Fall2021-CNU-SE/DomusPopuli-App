@@ -162,7 +162,9 @@ const WriteCheckList = ({ navigation }) => {
         underlayColor="#e65a5a"
         style={styles.footer}
       >
-        <Text style={styles.boldWhite}>다음</Text>
+        <Text style={styles.boldWhite}>
+          {index<12?"다음":"제출"}
+        </Text>
       </TouchableHighlight>
     </View>
   );
