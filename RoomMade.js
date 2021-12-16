@@ -17,52 +17,82 @@ const RoomMade = () => {
         />
       </View>
 
-      <View style={styles.title}>
-        <Text style={styles.black}>진행률 0/5</Text>
-      </View>
-      
       <View style={styles.content}>
         <Text style={styles.black}>방위치, 크기를 입력해 주세요.</Text>
         <View style={styles.table}>
           <View style={styles.row}>
-            <Text style={styles.rowText}>방 크기</Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>방 위치</Text>
+            </View>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}>평</Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}></Text>
+            </View>
           </View>
+
           <View style={styles.row}>
-            <Text style={styles.rowText}>방 위치</Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>방 크기</Text>
+            </View>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>평</Text>
+            </View>
           </View>
+
           <View style={styles.row}>
-            <Text style={styles.rowText}>상세주소</Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>보증금</Text>
+            </View>
             <TextInput style={styles.input}/>
-            <Text style={styles.rowText}></Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>만원</Text>
+            </View>
           </View>
+
+          <View style={styles.row}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>관리비</Text>
+            </View>
+            <TextInput style={styles.input}/>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>만원</Text>
+            </View>
+          </View>          
         </View>
 
-        <View style={styles.table}>
+        <View style={styles.bottomTable}>
           <Text style={styles.black}>{'전세, 월세를 체크해주세요.\n'}</Text>
-          <View style={styles.row}>
+          <View style={styles.bottomRow}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}></Text>
+            </View>
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
-            <Text style={styles.chooseText}>전세</Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.chooseText}>전세</Text>
+            </View>
 
             <BouncyCheckbox
-            fillColor="red"
-            iconStyle={{ borderColor: "red" }}
+            fillColor="#D43736"
+            iconStyle={{ borderColor: "#D43736" }}
             onPress={(isChecked) => {}} 
             />
-            <Text style={styles.chooseText}>월세</Text>
+            <View style={styles.rowBox}>
+              <Text style={styles.chooseText}>월세</Text>
+            </View>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}></Text>
+            </View>
           </View>
         </View>
       </View>
       
       <View style={styles.footer}>
-        <Text style={styles.boldWhite}>다음</Text>
+        <Text style={styles.boldWhite}>확인</Text>
       </View>
     </View>
   );
@@ -86,6 +116,7 @@ const styles = StyleSheet.create({
  },
   container: {
     flex: 1,
+    backgroundColor:"white",
   },
   title: {
     flex: 2,
@@ -93,7 +124,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    flex: 7,
+    flex: 9,
     marginTop: 20,
     marginBottom: 20,
     marginLeft: 20,
@@ -116,36 +147,42 @@ const styles = StyleSheet.create({
   },
   table: {
     flex: 1,
+    marginTop:20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bottomTable: {
+    flex: 1,
+    marginTop:20,
+    alignItems: "center",
   },
   input: {
-    borderWidth: 2,
-    borderStyle: "solid",
+    borderWidth: 1.5,
     borderColor: "#D43736",
     borderRadius: 10,
-    width: "30%",
-    fontSize: 20,
+    flex:3,
   },
   row:{
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
+    height:50,
     flexDirection: "row",
-    alignContent: "space-around",
-    justifyContent: "space-between",
-    borderLeftWidth: 0.3,
-    borderRightWidth: 0.3,
-    borderBottomWidth: 0.3,
-    borderStyle: "solid",
-    borderColor: "white",
+    marginBottom:10,
+    borderRadius:10,
+  },
+  bottomRow:{
+    height:50,
+    flexDirection: "row",
+    marginBottom:10,
+    borderRadius:10,
+  },
+  rowBox:{
+    flex:1,
+    justifyContent: "center",
   },
   rowText: {
-    width: "21%",
     fontSize: 20,
     textAlign: "center",
   },
   chooseText:{
-    width: "21%",
     fontSize: 20,
   },
 });
