@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RoomList from './RoomList'
-import CheckList from './CheckList'
+import WriteCheckList from './WriteCheckList'
 import RoomMade from './RoomMade'
 import Logo from './Logo'
 
@@ -26,8 +26,8 @@ const app = () => {
           component={RoomList}
         />
         <Stack.Screen
-          name="CheckList"
-          component={CheckList}
+          name="WriteCheckList"
+          component={WriteCheckList}
         />
         <Stack.Screen
           name="RoomMade"

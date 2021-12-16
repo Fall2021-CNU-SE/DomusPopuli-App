@@ -40,7 +40,7 @@ const RoomList = ({ navigation }) => {
         <View style={styles.table}>
           <View style={styles.row}>
             <TouchableWithoutFeedback 
-              onPress={ () => navigation.navigate("CheckList") }
+              onPress={ () => navigation.push("WriteCheckList") }
             > 
               <View style={styles.tableRoomName}>
                 <Text style={styles.rowText}>궁동 방</Text>
