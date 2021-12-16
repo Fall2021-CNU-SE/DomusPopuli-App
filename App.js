@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-<<<<<<< HEAD
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
