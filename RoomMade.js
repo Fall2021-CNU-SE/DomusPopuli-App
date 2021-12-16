@@ -20,10 +20,14 @@ const RoomMade = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image 
-          source={require('./image/left_arrow.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.goBack() }
+        >
+          <Image 
+            source={require('./image/left_arrow.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
         <Text style={styles.black}>방 생성</Text>
         <TouchableWithoutFeedback
           onPress={ ()=>navigation.popToTop() }
@@ -135,6 +139,18 @@ const RoomMade = ({ navigation }) => {
               <Text style={styles.rowText}></Text>
             </View>
           </View>
+          <View style={checked==="second"?styles.bottomRow:{display:"none"}}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>월세</Text>
+            </View>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(deposit)=>house.rentalfee}
+            />
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>만원</Text>
+            </View>
+          </View>
         </View>
       </View>
       
@@ -199,7 +215,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#D43736",
   },
   table: {
-    flex: 1,
+    flex: 2,
     marginTop:20,
     alignItems: "center",
     justifyContent: "center",
