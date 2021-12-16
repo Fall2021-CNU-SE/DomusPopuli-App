@@ -2,57 +2,72 @@ import React from 'react';
 import { Text, View, Image, StyleSheet} from 'react-native';
 
 const DetailScore = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image 
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image 
           source={require('./image/left_arrow.png')}
           style={styles.imageButton}
-        />
-        <Text style={styles.black}>상세 점수 조회</Text>
-        <Image 
-          source={require('./image/plus.png')}
+          />
+          <Text style={styles.black}>상세 점수 조회</Text>
+          <Image 
+          source={require('./image/white.png')}
           style={styles.imageButton}
         />
-      </View>
-
-      <View style={styles.content}> 
-        <View style={styles.tableHeader}>
-          <View style={styles.tableHeaderRoomName}>
-            <Text style={styles.tableHeaderText}>카테고리</Text>
-          </View>
-          <View style={styles.tableHeaderScore}>
-            <Text style={styles.tableHeaderText}>점수</Text>
-          </View>
         </View>
 
-
-        <View style={styles.table}>
-          <View style={styles.row}>
-			      <View style={styles.tableRoomName}>
-			        <Text style={styles.rowText}>집안</Text>
-			      </View>
-			      <View style={styles.tableScore}>
-			        <Text style={styles.rowText}> 48 점</Text>
-			      </View>
+        <View style={styles.content}> 
+          <View style={styles.table}>
+            <View style={styles.row}>
+              <View style={styles.scoreTextBox}>
+                <Text style={styles.checkListText}>체크리스트 점수</Text>
+              </View>
+              <View style={styles.scoreTextBox}>
+                <Text style={styles.checkListText}>시설 점수</Text>
+              </View>
+              <View style={styles.scoreTextBox}>
+                <Text style={styles.checkListText}>총점</Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.scoreBox}>
+                <Text style={styles.black}>50</Text>
+              </View>
+              <View style={styles.scoreBox}>
+                <Text style={styles.black}>20</Text>
+              </View>
+              <View style={styles.scoreBox}>
+                <Text style={styles.black}>70</Text>
+              </View>
+            </View>
           </View>
 
-          <View style={styles.row}>
-			      <View style={styles.tableRoomName}>
-			        <Text style={styles.rowText}>화장실 등등등</Text>
-			      </View>
-			      <View style={styles.tableScore}>
-			        <Text style={styles.rowText}> 98 점</Text>
-			      </View>
-          </View>					
+          <View style={styles.tableBottom}>
+            <View style={styles.tableBottomRow}>
+              <View style={styles.nameBox}>
+                <Text style={styles.checkListText}>시설명</Text>
+              </View>
+              <View style={styles.addBox}>
+                <Text style={styles.checkListText}>주소</Text>
+              </View>
+            </View>
+            <View style={styles.tableBottomRow}>
+              <View style={styles.nameTextBox}>
+                <Text style={styles.nameText}>헤종이집</Text>
+              </View>
+              <View style={styles.addTextBox}>
+                <Text style={styles.nameText}>분식살롱</Text>
+              </View>
+            </View>
+          </View>   
         </View>
-      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-	container: {
+  container: {
     flex: 1,
     backgroundColor:"white",
   },
@@ -74,30 +89,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
   },
-  tableHeader:{
-	flexDirection: "row",
-	flex: 1,
+  checkListText:{
+    fontSize: 18,
+    textAlign:"center",
+    color:"white",
   },
-  tableHeaderText:{
-	fontSize:20,
-	color:"white",
-	fontWeight:"bold",
-	textAlign:"center",
-  },
-  tableHeaderRoomName:{
-    backgroundColor:"#D43736",
-    borderRightWidth:1,
-    borderRightColor: "white",
-    flex: 3,
-    borderRadius:20,
-    justifyContent: "center",
-  },
-  tableHeaderScore:{
-    backgroundColor: "#D43736",
-    borderRadius:20,
-    flex: 1,
-    justifyContent: "center",
-},
   header: {
     flex: 1,
     flexDirection: "row",
@@ -107,40 +103,84 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.3,
     borderBottomColor: "#DCDCDC",
   },
+  scoreTextBox:{
+    flex:1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth:0.5,
+    borderRadius:10,
+    borderColor:"white",
+    backgroundColor:"#D43736"
+  },
+  nameText:{
+    fontSize: 18,
+    textAlign:"center",
+  },
+  nameBox:{
+    flex:1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth:0.5,
+    borderRadius:10,
+    borderColor:"white",
+    backgroundColor:"#D43736"
+  },
+  addBox:{
+    flex:1.5,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth:0.5,
+    borderRadius:10,
+    borderColor:"white",
+    backgroundColor:"#D43736"
+  },
+  scoreBox:{
+    flex:1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth:0.3,
+    borderRadius:10,
+    borderColor:"#D43736",
+},
+  nameTextBox:{
+    flex:1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth:0.3,
+    borderRadius:10,
+    borderColor:"#D43736",
+  },
+  addTextBox:{
+    flex:1.5,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth:0.3,
+    borderRadius:10,
+    borderColor:"#D43736",
+  },
   black: {
     fontSize: 20,
     textAlign:"center",
   },
   table: {
-    flex: 9,
+    flex: 1,
   },
-  tableRoomName:{
-    flex: 3,
-    borderRightWidth:1,
-    borderRightColor: "black",
-	},
-  tableScore:{
-    flex:1,
-	},
+  tableBottom:{
+    flex:4,
+  },
   row:{
     height:50,
-    // paddingLeft: 20,
-    // paddingRight: 20,
-    // paddingBottom: 20,
-    paddingTop: 20,
     flexDirection: "row",
     alignContent: "space-around",
     justifyContent: "space-between",
-    borderLeftWidth: 0.3,
-    borderRightWidth: 0.3,
-    borderBottomWidth: 0.3,
-    borderStyle: "solid",
-    // borderColor: "#DCDCDC",
-    borderColor: "white",    
+    borderColor:"white",
   },
-  rowText: {
-    fontSize: 20,
-    textAlign: "center",
+  tableBottomRow:{
+    height:70,
+    flexDirection: "row",
+    alignContent: "space-around",
+    justifyContent: "space-between",
+    borderColor:"white",
   },
 });
 
