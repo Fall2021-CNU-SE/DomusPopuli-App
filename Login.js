@@ -4,6 +4,7 @@ TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const user = {
   id: "",
@@ -65,7 +66,14 @@ const Login = ({ navigation }) => {
             style={styles.accountBox}
             underlayColor="#e65a5a"
             onPress={()=>{
-              //send request
+              // Send login request
+              axios.post("192.168.35.205:8080/signin", user)
+              .then(resp => {
+                if(resp.data.error === "null") {
+                  // TODO: access token
+                  const jwt = resp.data.token;
+                }
+              })
             }}
           >
             <Text style={styles.loginText}>로그인</Text>

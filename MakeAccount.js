@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet, TextInput,
 TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios';
 
 const user = {
   id: "",
@@ -62,8 +63,13 @@ const MakeAccount = ({ navigation }) => {
               underlayColor="#e65a5a"
               onPress={()=>{
                 //send request
-                alert("가입되었습니다");
-                navigation.goBack();
+                axios.post("192.168.35.205:8080/signup", user)
+                .then(resp => {
+                  if(resp.data.error === "null") {
+                    alert("가입되었습니다");
+                    navigation.goBack();
+                  }
+                });
               }}
             >
               <Text style={styles.boldWhite}>회원가입 완료</Text>
