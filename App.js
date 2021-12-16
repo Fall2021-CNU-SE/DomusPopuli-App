@@ -26,13 +26,13 @@ const app = () => {
     // <MakeAccount/>
     // <Login/>
     // <PreferenceSurvey/>
-    <Inputbugetandloc/>
+    // <Inputbugetandloc/>
     // <PreferenceFacil/>
     // <RoomList/>
     // <RoomMade/>
     // <CheckMonthly/>
     // <CheckLease/>
-    // <WriteCheckList/>
+    <WriteCheckList/>
     // <ScoreLoading/>
     // <DetailScore/>
   );

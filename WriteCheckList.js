@@ -10,18 +10,16 @@ const WriteCheckList = () => {
           source={require('./image/left_arrow.png')}
           style={styles.imageButton}
         />
-        <Text style={styles.black}>체크리스트 작성 - 화장실</Text>
+        <Text style={styles.black}>체크리스트 작성</Text>
         <Image 
           source={require('./image/x.png')}
           style={styles.imageButton}
         />
       </View>
-        <View style={styles.title}>
-          <Text style={styles.titleText}>{'화장실 작성 진행률 1/3\n\n\n'}</Text>
-          <View style={styles.checklistBox}>
-            <Text style={styles.black}>{'변기와 세면대 물을 동시에 사용해보세요.\n수압이 어떤가요 ?\n'}</Text>
-          </View>
-        </View>
+      
+      <View style={styles.title}>
+        <Text style={styles.black}>{'변기와 세면대 물을 동시에 사용해보세요.수압이 어떤가요 ?'}</Text>
+      </View>
         
       <View style={styles.content}>
         <View style={styles.row}>
@@ -125,6 +123,10 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 30,
+    marginRight: 30,
   },
   content: {
     flex: 7,
@@ -148,10 +150,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#D43736",
-  },
-  checklistBox:{
-    flex:1,
-    justifyContent: "flex-end",
   },
   row:{
     height:80,
