@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, TextInput,
 TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const RoomList = ({ navigation }) => {
+  const [verified, setVeritied] = useState(true);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
           source={require('./image/User.png')}
           style={styles.imageButton}
+          onPress={ ()=>navigation.navigate(verified ? "Mypage" : "Login") }
         />
         <Text style={styles.headerText}>방 목록</Text>
         <TouchableWithoutFeedback
-          onPress={ ()=>navigation.navigate("RoomMade") }
+          onPress={ ()=>navigation.navigate(verified ? "RoomMade" : "login") }
         >
           <Image 
             source={require('./image/plus.png')}
