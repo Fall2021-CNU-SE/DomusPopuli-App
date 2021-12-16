@@ -36,8 +36,18 @@ const RoomMade = ({ navigation }) => {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.black}>방위치, 크기를 입력해 주세요.</Text>
+        <Text style={styles.black}>각 항목을 입력해 주세요.</Text>
         <View style={styles.table}>
+          <View style={styles.row}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>방 이름</Text>
+            </View>
+            <TextInput style={styles.input}/>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}></Text>
+            </View>
+          </View>
+
           <View style={styles.row}>
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 위치</Text>

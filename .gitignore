@@ -13,7 +13,5 @@ web-build/
 *.swp
 
 IInterface.js
-Roomtemp.js
-RoomMadeTemp.js
 # macOS
 .DS_Store
