@@ -9,6 +9,10 @@ import RoomMade from './RoomMade'
 import Logo from './Logo'
 import Login from './Login'
 import MakeAccount from './MakeAccount'
+import Inputbugetandloc from './Inputbugetandloc'
+import PreferenceFacil from './PreferenceFacil'
+import PreferenceList from './PreferenceList'
+import DetailScore from './DetailScore'
 
 const Stack = createNativeStackNavigator();
 
@@ -43,11 +47,25 @@ const app = () => {
           name="MakeAccount"
           component={MakeAccount}
         />
+        <Stack.Screen
+          name="Inputbugetandloc"
+          component={Inputbugetandloc}
+        />
+        <Stack.Screen
+          name="PreferenceFacil"
+          component={PreferenceFacil}
+        />
+        <Stack.Screen
+          name="PreferenceList"
+          component={PreferenceList}
+        />
+        <Stack.Screen
+          name="DetailScore"
+          component={DetailScore}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   ) : (<Logo/>);
 };
-
-
 
 export default app;

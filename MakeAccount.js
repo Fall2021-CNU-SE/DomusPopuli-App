@@ -50,7 +50,7 @@ const MakeAccount = ({ navigation }) => {
                 <TextInput 
                   style={styles.input}
                   onChangeText={(pw)=>{user.pw = pw}}
-                  secureTextEntry="true"
+                  secureTextEntry={true}
                 />
               </View>
             </View>            

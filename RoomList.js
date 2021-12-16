@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, TextInput,
+import { Text, View, Image, StyleSheet, TextInput, FlatList,
 TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const dat = [
+  {name: 'A', totalScore: 100},
+  {name: 'B', totalScore: 10},
+  {name: 'C', totalScore: 50}
+];
 
 const RoomList = ({ navigation }) => {
   const [verified, setVeritied] = useState(false);
@@ -36,18 +42,27 @@ const RoomList = ({ navigation }) => {
         </View>
 
         <View style={styles.table}>
-          <View style={styles.row}>
-            <TouchableWithoutFeedback 
-              onPress={ () => navigation.push("WriteCheckList") }
-            > 
-              <View style={styles.tableRoomName}>
-                <Text style={styles.rowText}>궁동 방</Text>
+          <FlatList
+            data = {dat}
+            renderItem={({item}) => (
+              <View style={styles.row}>
+                <TouchableWithoutFeedback 
+                  onPress={ () => navigation.push("WriteCheckList", item)}
+                > 
+                  <View style={styles.tableRoomName}>
+                    <Text style={styles.rowText}>{item.name}</Text>
+                  </View>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback 
+                  onPress={ () => navigation.push("DetailScore", item)}
+                >
+                  <View style={styles.tableScore}>
+                    <Text style={styles.rowText}>{item.totalScore}</Text>
+                  </View>
+                </TouchableWithoutFeedback>
               </View>
-            </TouchableWithoutFeedback>
-						<View style={styles.tableScore}>
-							<Text style={styles.rowText}> 98 점</Text>
-						</View>
-          </View>
+            )}
+          />
         </View>
       </View>
     </View>

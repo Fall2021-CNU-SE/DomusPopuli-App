@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet, TextInput,
 TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const user = {
   id: "",
@@ -57,7 +58,7 @@ const Login = ({ navigation }) => {
             <TextInput 
               style={styles.input}
               onChangeText={(pw)=>{user.pw = pw}}
-              secureTextEntry="true"
+              secureTextEntry={true}
             />
           </View>
           <TouchableHighlight 
