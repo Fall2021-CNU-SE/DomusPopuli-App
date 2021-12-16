@@ -5,13 +5,15 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
+let score = 0;
 const checkList = {};
 const keyTable = ["H0","H1","H2","B0","B1","B2","K0","K1","K2","E0","O0",
     "O1","O2"];
   const titleTable = [
     "천장, 벽지를 보면서 누수의 흔적이나 곰팡이가 없는지 확인해보세요. 구석진 곳에도 문제가 없나요?",
     "옵션(냉장고, 에어컨, 인덕션, 세탁기 )등이 있다면 냄새가 나지는 않는지, 온도가 알맞게 설정되는지 등 작동 여부를 확인해보세요. 잘 작동하나요?",
-    "난방이 잘 되는지 확인해보세요. 그리고 보일러의 시고 표지판이라는 스티커를 보면 시공 연월일 항목을 볼 수 있습니다. 시고 표지판으로 노후를 체크해보세요. 10년 이상된 보일러는 잔고장이 많습니다.",
+    "난방이 잘 되는지 확인해보세요. 그리고 보일러의 시고 표지판이라는 스티커를 보면 시공 연월일 항목을 볼 수 있습니다. 시고 표지판으로 노후를 체크해보세요.",
     "수압을 확인하기 위해 변기와 세면대, 싱크대 물을 동시에 사용해보세요. 수압이 괜찮나요?",
     "물이 내려갈 때 배수구, 세면대의 물막힘, 물고임 등이 있는지 확인해보세요. 별다른 문제가 없나요?",
     "샤워 헤드, 변기, 세면대, 거울, 수납 공간 등 상태가 괜찮나요?",
@@ -25,7 +27,6 @@ const keyTable = ["H0","H1","H2","B0","B1","B2","K0","K1","K2","E0","O0",
   ];
 
 const WriteCheckList = ({ navigation }) => {
-  let score = 0;
   const [index, setIndex] = useState(0);
   const [checked, setChecked] = useState("none");
   return (
@@ -50,12 +51,9 @@ const WriteCheckList = ({ navigation }) => {
         </TouchableWithoutFeedback> 
       </View> 
       <View style={styles.title}>
-        <Text style={styles.titleText}>{'화장실 작성 진행률 1/3\n\n\n'}</Text>
-        <View style={styles.checklistBox}>
-          <Text style={styles.black}>
-            {titleTable[index]}
-          </Text>
-        </View>
+        <Text style={styles.black}>
+          {titleTable[index]}
+        </Text>
       </View>
         
       <View style={styles.content}>
@@ -64,7 +62,10 @@ const WriteCheckList = ({ navigation }) => {
             <BouncyCheckbox
               disableBuiltInState
               isChecked={checked==="first" ? true : false}
-              onPress={()=>{setChecked("first");}}
+              onPress={()=>{
+                setChecked("first");
+                score=5;
+              }}
               fillColor="#D43736"
               iconStyle={{ borderColor: "#D43736" }}
             />
@@ -79,7 +80,10 @@ const WriteCheckList = ({ navigation }) => {
             <BouncyCheckbox
               disableBuiltInState
               isChecked={checked==="second" ? true : false}
-              onPress={()=>{setChecked("second")}}
+              onPress={()=>{
+                setChecked("second");
+                score=4;
+              }}
               fillColor="#D43736"
               iconStyle={{ borderColor: "#D43736" }}
             />
@@ -94,7 +98,10 @@ const WriteCheckList = ({ navigation }) => {
             <BouncyCheckbox
               disableBuiltInState
               isChecked={checked==="third" ? true : false}
-              onPress={()=>{setChecked("third")}}
+              onPress={()=>{
+                setChecked("third");
+                score=3;
+              }}
               fillColor="#D43736"
               iconStyle={{ borderColor: "#D43736" }}
             />
@@ -109,7 +116,10 @@ const WriteCheckList = ({ navigation }) => {
             <BouncyCheckbox
               disableBuiltInState
               isChecked={checked==="fourth" ? true : false}
-              onPress={()=>{setChecked("fourth")}}
+              onPress={()=>{
+                setChecked("fourth");
+                score=2;
+              }}
               fillColor="#D43736"
               iconStyle={{ borderColor: "#D43736" }}
             />
@@ -124,7 +134,10 @@ const WriteCheckList = ({ navigation }) => {
             <BouncyCheckbox
               disableBuiltInState
               isChecked={checked==="fifth" ? true : false}
-              onPress={()=>{setChecked("fifth")}}
+              onPress={()=>{
+                setChecked("fifth");
+                score=1;
+              }}
               fillColor="#D43736"
               iconStyle={{ borderColor: "#D43736" }}
             />
@@ -139,6 +152,7 @@ const WriteCheckList = ({ navigation }) => {
         onPress={()=>{
           checkList[keyTable[index]] = score;
           setChecked("none");
+          score = 0;
           if(index<12) setIndex(index+1);
           console.log(checkList);
         }}
