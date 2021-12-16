@@ -24,9 +24,9 @@ const app = () => {
 //    </View>
     // <CheckList/>
     // <MakeAccount/>
-    <Login/>
+    // <Login/>
     // <PreferenceSurvey/>
-    // <Inputbugetandloc/>
+    <Inputbugetandloc/>
     // <PreferenceFacil/>
     // <RoomList/>
     // <RoomMade/>
