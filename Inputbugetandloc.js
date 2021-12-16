@@ -18,24 +18,34 @@ const Inputbugetandloc = () => {
           
           <View style={styles.title}>
             <Text style={styles.black}>
-              예산과 직장(학교)위치를 입력해 주세요
+              예산과 직장(학교)위치를 입력해 주세요.
             </Text>
           </View>
           
           <View style={styles.content}>
             <View style={styles.table}>
-              <View style={styles.topRow}>
-                <Text style={styles.rowText}>예산</Text>
-                <TextInput style={styles.input}/>
-                <Text style={styles.rowText}>만원</Text>
-              </View>
               <View style={styles.row}>
-                <Text style={styles.rowText}>직장위치</Text>
+                <View style={styles.rowBox}>
+                  <Text style={styles.rowText}>예산</Text>
+                </View>
                 <TextInput style={styles.input}/>
-                <Text style={styles.rowText}></Text>
+                <View style={styles.rowBox}>
+                  <Text style={styles.rowText}>만원</Text>
+                </View>
+              </View>
+              
+              <View style={styles.row}>
+                <View style={styles.rowBox}>
+                  <Text style={styles.rowText2}>직장 위치</Text>
+                </View>
+                <TextInput style={styles.input}/>
+                <View style={styles.rowBox}>
+                  <Text style={styles.rowText}></Text>
+                </View>
               </View>
             </View>
           </View>
+
           <View style={styles.footer}>
             <Text style={styles.boldWhite}>다음</Text>
           </View>
@@ -59,6 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container: {
+    backgroundColor:"white",
     flex: 1,
   },
   title: {
@@ -99,36 +110,30 @@ const styles = StyleSheet.create({
   table: {
     flex: 1,
   },
-  row:{
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
-    flexDirection: "row",
-    alignContent: "space-around",
-    justifyContent: "space-between",
-    borderLeftWidth: 0.3,
-    borderRightWidth: 0.3,
-    borderBottomWidth: 0.3,
-    borderStyle: "solid",
-    borderColor: "white",
+  input: {
+    borderWidth: 1.5,
+    borderColor: "#D43736",
+    borderRadius: 10,
+    flex:3,
   },
-  topRow: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
+  row:{
+    height:50,
     flexDirection: "row",
-    alignContent: "space-around",
-    justifyContent: "space-between",
-    borderWidth: 0.3,
-    borderStyle: "solid",
-    borderColor: "white",
+    marginBottom:10,
+    borderRadius:10,
+  },
+  rowBox:{
+    flex:1,
+    justifyContent: "center",
   },
   rowText: {
-    width: "21%",
-    fontSize: 20,
+    fontSize: 19,
     textAlign: "center",
+  },
+  rowText2: {
+    fontSize: 18,
+    textAlign: "center",
+    paddingRight:5,
   },
 });
 

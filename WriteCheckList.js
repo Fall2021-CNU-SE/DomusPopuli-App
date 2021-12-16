@@ -64,10 +64,9 @@ const WriteCheckList = ({ navigation }) => {
             <BouncyCheckbox
               disableBuiltInState
               isChecked={checked==="first" ? true : false}
-              onPress={()=>{setChecked("first");
-              console.log(checked==="second");}}
-              fillColor="red"
-              iconStyle={{ borderColor: "red" }}
+              onPress={()=>{setChecked("first");}}
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
             />
           </View>
           <View style={styles.centerBox}>
@@ -81,8 +80,8 @@ const WriteCheckList = ({ navigation }) => {
               disableBuiltInState
               isChecked={checked==="second" ? true : false}
               onPress={()=>{setChecked("second")}}
-              fillColor="red"
-              iconStyle={{ borderColor: "red" }}
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
             />
           </View>
           <View style={styles.centerBox}>
@@ -96,8 +95,8 @@ const WriteCheckList = ({ navigation }) => {
               disableBuiltInState
               isChecked={checked==="third" ? true : false}
               onPress={()=>{setChecked("third")}}
-              fillColor="red"
-              iconStyle={{ borderColor: "red" }}
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
             />
           </View>
           <View style={styles.centerBox}>
@@ -111,8 +110,8 @@ const WriteCheckList = ({ navigation }) => {
               disableBuiltInState
               isChecked={checked==="fourth" ? true : false}
               onPress={()=>{setChecked("fourth")}}
-              fillColor="red"
-              iconStyle={{ borderColor: "red" }}
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
             />
           </View>
           <View style={styles.centerBox}>
@@ -126,8 +125,8 @@ const WriteCheckList = ({ navigation }) => {
               disableBuiltInState
               isChecked={checked==="fifth" ? true : false}
               onPress={()=>{setChecked("fifth")}}
-              fillColor="red"
-              iconStyle={{ borderColor: "red" }}
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
             />
           </View>
           <View style={styles.centerBox}>
@@ -155,6 +154,7 @@ const WriteCheckList = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"white",
   },
   imageButton: {
     width: 30,
@@ -179,6 +179,10 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 30,
+    marginRight: 30,
   },
   content: {
     flex: 7,
@@ -202,10 +206,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#D43736",
-  },
-  checklistBox:{
-    flex:1,
-    justifyContent: "flex-end",
   },
   row:{
     height:80,

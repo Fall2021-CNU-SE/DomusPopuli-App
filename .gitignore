@@ -14,5 +14,6 @@ web-build/
 
 IInterface.js
 Roomtemp.js
+RoomMadeTemp.js
 # macOS
 .DS_Store
