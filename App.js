@@ -8,6 +8,7 @@ import WriteCheckList from './WriteCheckList'
 import RoomMade from './RoomMade'
 import Logo from './Logo'
 import Login from './Login'
+import MakeAccount from './MakeAccount'
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,10 @@ const app = () => {
         <Stack.Screen
           name="Login"
           component={Login}
+        />
+        <Stack.Screen
+          name="MakeAccount"
+          component={MakeAccount}
         />
       </Stack.Navigator>
     </NavigationContainer>

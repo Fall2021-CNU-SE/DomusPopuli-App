@@ -156,7 +156,7 @@ const WriteCheckList = ({ navigation }) => {
             setIndex(index+1)
           }
           else {
-            
+            //send request
           }
         }}
         underlayColor="#e65a5a"

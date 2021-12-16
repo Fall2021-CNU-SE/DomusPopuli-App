@@ -4,9 +4,12 @@ TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+const user = {
+  id: "",
+  pw: ""
+}
+
 const Login = ({ navigation }) => {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -44,7 +47,7 @@ const Login = ({ navigation }) => {
             </View>
             <TextInput 
               style={styles.input}
-              onChangeText={(id)=>setId(id)}
+              onChangeText={(id)=>{user.id = id}}
             />
           </View>
           <View style={styles.row}>
@@ -53,14 +56,15 @@ const Login = ({ navigation }) => {
             </View>
             <TextInput 
               style={styles.input}
-              onChangeText={(pw)=>setPw(pw)}
+              onChangeText={(pw)=>{user.pw = pw}}
+              secureTextEntry="true"
             />
           </View>
           <TouchableHighlight 
             style={styles.accountBox}
             underlayColor="#e65a5a"
             onPress={()=>{
-
+              //send request
             }}
           >
             <Text style={styles.loginText}>로그인</Text>
@@ -71,7 +75,7 @@ const Login = ({ navigation }) => {
         style={styles.footer}
         underlayColor="#e65a5a"
         onPress={()=>{
-
+          navigation.push("MakeAccount");
         }}
       >
         <Text style={styles.boldWhite}>회원가입</Text>

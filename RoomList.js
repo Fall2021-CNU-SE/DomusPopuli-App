@@ -5,18 +5,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const RoomList = ({ navigation }) => {
-  const [verified, setVeritied] = useState(true);
+  const [verified, setVeritied] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
           source={require('./image/User.png')}
           style={styles.imageButton}
-          onPress={ ()=>navigation.navigate(verified ? "Mypage" : "Login") }
+          onPress={ ()=>navigation.push(verified ? "Mypage" : "Login") }
         />
         <Text style={styles.headerText}>방 목록</Text>
         <TouchableWithoutFeedback
-          onPress={ ()=>navigation.navigate(verified ? "RoomMade" : "Login") }
+          onPress={ ()=>navigation.push(verified ? "RoomMade" : "Login") }
         >
           <Image 
             source={require('./image/plus.png')}
@@ -35,8 +35,6 @@ const RoomList = ({ navigation }) => {
             </View>
         </View>
 
-
-{/* scoll view 용우화이팅*/}
         <View style={styles.table}>
           <View style={styles.row}>
             <TouchableWithoutFeedback 
