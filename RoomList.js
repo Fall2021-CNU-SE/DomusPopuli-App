@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const RoomList = ({ navigation }) => {
-  const [verified, setVeritied] = useState(true);
+  const [verified, setVeritied] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -16,7 +16,7 @@ const RoomList = ({ navigation }) => {
         />
         <Text style={styles.headerText}>방 목록</Text>
         <TouchableWithoutFeedback
-          onPress={ ()=>navigation.navigate(verified ? "RoomMade" : "login") }
+          onPress={ ()=>navigation.navigate(verified ? "RoomMade" : "Login") }
         >
           <Image 
             source={require('./image/plus.png')}

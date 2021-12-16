@@ -1,46 +1,84 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Image, StyleSheet, TextInput, 
+TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Login = () => {
-    return (
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.black}>로그인</Text>
-          </View>
-          
-          <View style={styles.title}>
+const Login = ({ navigation }) => {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableWithoutFeedback
+          onPress={ ()=>{navigation.goBack()} }
+        >
           <Image 
-              source={require('./image/logo.png')}
-              style={styles.titleImage}
+            source={require('./image/left_arrow.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
+        <Text style={styles.black}>로그인</Text>
+        <TouchableWithoutFeedback
+          onPress={ ()=>{navigation.popToTop()} }
+        >
+          <Image 
+            source={require('./image/x.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
+      </View>
+      
+      <View style={styles.title}>
+      <Image 
+          source={require('./image/logo.png')}
+          style={styles.titleImage}
+        />
+      </View>
+      
+      <View style={styles.content}>
+        <View style={styles.table}>
+          <View style={styles.row}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>ID</Text>
+            </View>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(id)=>setId(id)}
             />
           </View>
-          
-          <View style={styles.content}>
-            <View style={styles.table}>
-              <View style={styles.row}>
-                <View style={styles.rowBox}>
-                  <Text style={styles.rowText}>ID</Text>
-                </View>
-                <TextInput style={styles.input}/>
-              </View>
-              <View style={styles.row}>
-                <View style={styles.rowBox}>
-                  <Text style={styles.rowText}>PW</Text>
-                </View>
-                <TextInput style={styles.input}/>
-              </View>
-              <View style={styles.accountBox}>
-              <Text style={styles.loginText}>로그인</Text>
-              </View>
-            </View>            
+          <View style={styles.row}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>PW</Text>
+            </View>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(pw)=>setPw(pw)}
+            />
           </View>
+          <TouchableHighlight 
+            style={styles.accountBox}
+            underlayColor="#e65a5a"
+            onPress={()=>{
 
-          <View style={styles.footer}>
-            <Text style={styles.boldWhite}>회원가입</Text>
-          </View>
-        </View>
-      );
-    }
+            }}
+          >
+            <Text style={styles.loginText}>로그인</Text>
+          </TouchableHighlight>
+        </View>            
+      </View>
+      <TouchableHighlight 
+        style={styles.footer}
+        underlayColor="#e65a5a"
+        onPress={()=>{
+
+        }}
+      >
+        <Text style={styles.boldWhite}>회원가입</Text>
+      </TouchableHighlight>
+    </View>
+  );
+}
     
 const styles = StyleSheet.create({
   titleImage:{
@@ -81,7 +119,7 @@ const styles = StyleSheet.create({
     flex: 1.1,
     flexDirection: "row",
     alignItems: "flex-end",
-    justifyContent: "center",
+    justifyContent: "space-between",
     paddingBottom: 15,
     borderBottomWidth: 0.3,
     borderBottomColor: "#DCDCDC",
@@ -122,6 +160,12 @@ const styles = StyleSheet.create({
     backgroundColor:"#D43736",
     justifyContent: "center",
     borderRadius:10,
+  },
+  imageButton: {
+    width: 30,
+    height: 30,
+    marginLeft: 15,
+    marginRight: 15,
   },
 });
 

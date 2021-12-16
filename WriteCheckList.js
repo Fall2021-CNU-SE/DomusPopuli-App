@@ -5,7 +5,6 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
 let score = 0;
 const checkList = {};
 const keyTable = ["H0","H1","H2","B0","B1","B2","K0","K1","K2","E0","O0",
@@ -153,8 +152,12 @@ const WriteCheckList = ({ navigation }) => {
           checkList[keyTable[index]] = score;
           setChecked("none");
           score = 0;
-          if(index<12) setIndex(index+1);
-          console.log(checkList);
+          if(index<12) {
+            setIndex(index+1)
+          }
+          else {
+            
+          }
         }}
         underlayColor="#e65a5a"
         style={styles.footer}

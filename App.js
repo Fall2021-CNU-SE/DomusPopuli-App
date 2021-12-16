@@ -7,13 +7,14 @@ import RoomList from './RoomList'
 import WriteCheckList from './WriteCheckList'
 import RoomMade from './RoomMade'
 import Logo from './Logo'
+import Login from './Login'
 
 const Stack = createNativeStackNavigator();
 
 const app = () => {
   const [loaded, setLoaded] = useState(false);
   const timer = async() => {
-    setTimeout(() => {setLoaded(true)}, 2000);
+    setTimeout(() => {setLoaded(true)}, 3000);
   }
   timer();
   return loaded ? (
@@ -32,6 +33,10 @@ const app = () => {
         <Stack.Screen
           name="RoomMade"
           component={RoomMade}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
         />
       </Stack.Navigator>
     </NavigationContainer>
