@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, TextInput,
-TouchableWithoutFeedback } from 'react-native';
+TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
+const house = {
+  name: "",
+  address: "",
+  roomsize: 0,
+  deposit: 0,
+  maintenance: 0,
+  rentalfee: 0,
+  isrent: false
+}
+
 const RoomMade = ({ navigation }) => {
+  const [checked, setChecked] = useState("none");
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -31,7 +42,10 @@ const RoomMade = ({ navigation }) => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 위치</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(address)=>house.address}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}></Text>
             </View>
@@ -41,7 +55,10 @@ const RoomMade = ({ navigation }) => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 크기</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(roomsize)=>house.roomsize}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>평</Text>
             </View>
@@ -51,7 +68,10 @@ const RoomMade = ({ navigation }) => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>보증금</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(deposit)=>house.deposit}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>만원</Text>
             </View>
@@ -61,7 +81,10 @@ const RoomMade = ({ navigation }) => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>관리비</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(maintenance)=>house.maintenance}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>만원</Text>
             </View>
@@ -75,18 +98,25 @@ const RoomMade = ({ navigation }) => {
               <Text style={styles.rowText}></Text>
             </View>
             <BouncyCheckbox
-            fillColor="#D43736"
-            iconStyle={{ borderColor: "#D43736" }}
-            onPress={(isChecked) => {}} 
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
+              disableBuiltInState
+              isChecked={checked==="first"?true:false}
+              onPress={() => {setChecked("first")}} 
             />
             <View style={styles.rowBox}>
               <Text style={styles.chooseText}>전세</Text>
             </View>
 
             <BouncyCheckbox
-            fillColor="#D43736"
-            iconStyle={{ borderColor: "#D43736" }}
-            onPress={(isChecked) => {}} 
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
+              disableBuiltInState
+              isChecked={checked==="second"?true:false}
+              onPress={() => {
+                setChecked("second");
+                house.isrent = true;
+              }}
             />
             <View style={styles.rowBox}>
               <Text style={styles.chooseText}>월세</Text>
@@ -98,9 +128,15 @@ const RoomMade = ({ navigation }) => {
         </View>
       </View>
       
-      <View style={styles.footer}>
+      <TouchableHighlight 
+        style={styles.footer}
+        underlayColor="#e65a5a"
+        onPress={()=>{
+
+        }}
+      >
         <Text style={styles.boldWhite}>확인</Text>
-      </View>
+      </TouchableHighlight>
     </View>
   );
 }
