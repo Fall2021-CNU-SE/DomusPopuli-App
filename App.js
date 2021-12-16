@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import RoomList from './RoomList'
 import CheckList from './CheckList'
 import RoomMade from './RoomMade'
+import Logo from './Logo'
 
 const Stack = createNativeStackNavigator();
 
 const app = () => {
-  return (
+  const [loaded, setLoaded] = useState(false);
+  const timer = async() => {
+    setTimeout(() => {setLoaded(true)}, 2000);
+  }
+  timer();
+  return loaded ? (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator 
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen
           name="RoomList"
           component={RoomList}
@@ -26,7 +35,9 @@ const app = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  ) : (<Logo/>);
 };
+
+
 
 export default app;
