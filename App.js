@@ -7,12 +7,11 @@ import PreferenceSurvey from './PreferenceSurvey';
 import Inputbugetandloc from './Inputbugetandloc';
 import RoomList from './RoomList';
 import PreferenceFacil from './PreferenceFacil';
+import PreferenceList from './PreferenceList';
 import RoomMade from './RoomMade';
-import CheckMonthly from './CheckMonthly';
-import CheckLease from './CheckLease';
 import WriteCheckList from './WriteCheckList';
 import ScoreLoading from './ScoreLoading';
-import DetailScore from './DetailScore';
+import DetailScore from './DetailScoreTmp';
 
 const app = () => {
   return (
@@ -28,11 +27,10 @@ const app = () => {
     // <PreferenceSurvey/>
     // <Inputbugetandloc/>
     // <PreferenceFacil/>
+    // <PreferenceList/>
     // <RoomList/>
-    // <RoomMade/>
-    // <CheckMonthly/>
-    // <CheckLease/>
-    <WriteCheckList/>
+    <RoomMade/>
+    // <WriteCheckList/>
     // <ScoreLoading/>
     // <DetailScore/>
   );
