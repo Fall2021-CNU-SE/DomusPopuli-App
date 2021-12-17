@@ -4,6 +4,7 @@ TouchableWithoutFeedback} from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios'
 
 let score = 0;
 const checkList = {};
@@ -157,6 +158,16 @@ const WriteCheckList = ({ navigation }) => {
           }
           else {
             //send request
+            // TODO: get house name
+            // TODO: get token value
+            axios.post("http://192.168.35.205/checklist" + "/$house", {
+              token: "$token",
+              checklist: checkList,
+            }).then(resp => {
+              if(resp.data.error === "null") {
+                // Normal case
+              }
+            });
           }
         }}
         underlayColor="#e65a5a"

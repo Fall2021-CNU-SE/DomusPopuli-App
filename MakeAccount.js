@@ -63,7 +63,7 @@ const MakeAccount = ({ navigation }) => {
               underlayColor="#e65a5a"
               onPress={()=>{
                 //send request
-                axios.post("192.168.35.205:8080/signup", user)
+                axios.post("http://192.168.35.205:8080/signup", user)
                 .then(resp => {
                   if(resp.data.error === "null") {
                     alert("가입되었습니다");
