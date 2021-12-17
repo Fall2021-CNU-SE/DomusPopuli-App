@@ -11,18 +11,17 @@ const dat = [
 ];
 
 const RoomList = ({ navigation }) => {
-  const [verified, setVeritied] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
           source={require('./image/User.png')}
           style={styles.imageButton}
-          onPress={ ()=>navigation.push(verified ? "Mypage" : "Login") }
+          onPress={ ()=>navigation.push(getData() ? "Mypage" : "Login") }
         />
         <Text style={styles.headerText}>방 목록</Text>
         <TouchableWithoutFeedback
-          onPress={ ()=>navigation.push(verified ? "RoomMade" : "Login") }
+          onPress={ ()=>navigation.push(getData() ? "RoomMade" : "Login") }
         >
           <Image 
             source={require('./image/plus.png')}
@@ -62,11 +61,21 @@ const RoomList = ({ navigation }) => {
                 </TouchableWithoutFeedback>
               </View>
             )}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
       </View>
     </View>
   );
+}
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('jwt')
+    return value;
+  } catch(e) {
+    // error reading value
+  }
 }
 
 const styles = StyleSheet.create({

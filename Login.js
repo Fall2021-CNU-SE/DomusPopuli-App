@@ -67,11 +67,13 @@ const Login = ({ navigation }) => {
             underlayColor="#e65a5a"
             onPress={()=>{
               // Send login request
-              axios.post("192.168.35.205:8080/signin", user)
+              axios.post("http://192.168.35.205:8080/signin", user)
               .then(resp => {
                 if(resp.data.error === "null") {
                   // TODO: access token
                   const jwt = resp.data.token;
+                  storeData(jwt);
+                  navigation.goBack();
                 }
               })
             }}
@@ -91,6 +93,14 @@ const Login = ({ navigation }) => {
       </TouchableHighlight>
     </View>
   );
+}
+
+const storeData = async (value) => {
+  try {
+    await AsyncStorage.setItem('jwt', value)
+  } catch (e) {
+    // saving error
+  }
 }
     
 const styles = StyleSheet.create({
