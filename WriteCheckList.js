@@ -160,9 +160,13 @@ const WriteCheckList = ({ navigation }) => {
             //send request
             // TODO: get house name
             // TODO: get token value
-            axios.post("192.168.35.205/checklist" + "/$house", {
+            axios.post("http://192.168.35.205/checklist" + "/$house", {
               token: "$token",
               checklist: checkList,
+            }).then(resp => {
+              if(resp.data.error === "null") {
+                // Normal case
+              }
             });
           }
         }}
