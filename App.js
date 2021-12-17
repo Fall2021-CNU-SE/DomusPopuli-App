@@ -1,52 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import CheckList from './CheckList';
-import MakeAccount from './MakeAccount';
-import Login from './Login';
-import PreferenceSurvey from './PreferenceSurvey';
-import Inputbugetandloc from './Inputbugetandloc';
-import RoomList from './RoomList';
-import PreferenceFacil from './PreferenceFacil';
-import PreferenceList from './PreferenceList';
-import RoomMade from './RoomMade';
-import WriteCheckList from './WriteCheckList';
-import ScoreLoading from './ScoreLoading';
-import DetailScore from './DetailScoreTmp';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import RoomList from './RoomList'
+import WriteCheckList from './WriteCheckList'
+import RoomMade from './RoomMade'
+import Logo from './Logo'
+import Login from './Login'
+import MakeAccount from './MakeAccount'
+import Inputbugetandloc from './Inputbugetandloc'
+import PreferenceFacil from './PreferenceFacil'
+import PreferenceList from './PreferenceList'
+import DetailScore from './DetailScore'
+
+const Stack = createNativeStackNavigator();
 
 const app = () => {
-  return (
-//    <View style={styles.container}>
-    //  <Image 
-    //   source={require('./image/logo.png')} 
-    //    style={styles.title}
-    //  />
-//    </View>
-    // <CheckList/>
-    // <MakeAccount/>
-    // <Login/>
-    // <PreferenceSurvey/>
-    // <Inputbugetandloc/>
-    // <PreferenceFacil/>
-    // <PreferenceList/>
-    // <RoomList/>
-    <RoomMade/>
-    // <WriteCheckList/>
-    // <ScoreLoading/>
-    // <DetailScore/>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    width: 225,
-    height: 225,
-    resizeMode: "contain",
+  
+  const [loaded, setLoaded] = useState(false);
+  const timer = async() => {
+    setTimeout(() => {setLoaded(true)}, 3000);
   }
-});
+  timer();
+  return loaded ? (
+    <NavigationContainer>
+      <Stack.Navigator 
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen
+          name="RoomList"
+          component={RoomList}
+        />
+        <Stack.Screen
+          name="WriteCheckList"
+          component={WriteCheckList}
+        />
+        <Stack.Screen
+          name="RoomMade"
+          component={RoomMade}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+        />
+        <Stack.Screen
+          name="MakeAccount"
+          component={MakeAccount}
+        />
+        <Stack.Screen
+          name="Inputbugetandloc"
+          component={Inputbugetandloc}
+        />
+        <Stack.Screen
+          name="PreferenceFacil"
+          component={PreferenceFacil}
+        />
+        <Stack.Screen
+          name="PreferenceList"
+          component={PreferenceList}
+        />
+        <Stack.Screen
+          name="DetailScore"
+          component={DetailScore}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  ) : (<Logo/>);
+};
 
 export default app;

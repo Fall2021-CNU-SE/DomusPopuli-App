@@ -1,20 +1,34 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Image, StyleSheet, TextInput,
+TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import axios from "axios"
 
-const RoomMade = () => {
+const RoomMade = ({ navigation }) => {
+  let house = {};
+  const [checked, setChecked] = useState("none");
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image 
-          source={require('./image/left_arrow.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.goBack() }
+        >
+          <Image 
+            source={require('./image/left_arrow.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
         <Text style={styles.black}>방 생성</Text>
-        <Image 
-          source={require('./image/x.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.popToTop() }
+        >
+          <Image 
+            source={require('./image/x.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
       </View>
 
       <View style={styles.content}>
@@ -24,7 +38,10 @@ const RoomMade = () => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 이름</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(name)=>house.name = name}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}></Text>
             </View>
@@ -34,7 +51,10 @@ const RoomMade = () => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 위치</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(address)=>house.address = address}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}></Text>
             </View>
@@ -44,7 +64,10 @@ const RoomMade = () => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 크기</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(roomsize)=>house.roomsize = roomsize}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>평</Text>
             </View>
@@ -54,7 +77,10 @@ const RoomMade = () => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>보증금</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(deposit)=>house.deposit}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>만원</Text>
             </View>
@@ -64,7 +90,10 @@ const RoomMade = () => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>관리비</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(maintenance)=>house.maintenance = maintenance}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>만원</Text>
             </View>
@@ -78,18 +107,25 @@ const RoomMade = () => {
               <Text style={styles.rowText}></Text>
             </View>
             <BouncyCheckbox
-            fillColor="#D43736"
-            iconStyle={{ borderColor: "#D43736" }}
-            onPress={(isChecked) => {}} 
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
+              disableBuiltInState
+              isChecked={checked==="first"?true:false}
+              onPress={() => {setChecked("first")}} 
             />
             <View style={styles.rowBox}>
               <Text style={styles.chooseText}>전세</Text>
             </View>
 
             <BouncyCheckbox
-            fillColor="#D43736"
-            iconStyle={{ borderColor: "#D43736" }}
-            onPress={(isChecked) => {}} 
+              fillColor="#D43736"
+              iconStyle={{ borderColor: "#D43736" }}
+              disableBuiltInState
+              isChecked={checked==="second"?true:false}
+              onPress={() => {
+                setChecked("second");
+                house.isrent = true;
+              }}
             />
             <View style={styles.rowBox}>
               <Text style={styles.chooseText}>월세</Text>
@@ -98,14 +134,49 @@ const RoomMade = () => {
               <Text style={styles.rowText}></Text>
             </View>
           </View>
+          <View style={checked==="second"?styles.bottomRow:{display:"none"}}>
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>월세</Text>
+            </View>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(rentalfee)=>house.rentalfee = rentalfee}
+            />
+            <View style={styles.rowBox}>
+              <Text style={styles.rowText}>만원</Text>
+            </View>
+          </View>
         </View>
       </View>
       
-      <View style={styles.footer}>
+      <TouchableHighlight 
+        style={styles.footer}
+        underlayColor="#e65a5a"
+        onPress={()=>{
+          getData().then(tok => {
+            house.token = tok;
+            console.log(house);
+            axios.post("http://192.168.35.205:8080/house", house)
+              .then(resp => {
+                if(resp.data.error==="null") {
+                }
+              }).catch(e => {console.log(e)});
+          });
+        }}
+      >
         <Text style={styles.boldWhite}>확인</Text>
-      </View>
+      </TouchableHighlight>
     </View>
   );
+}
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('jwt')
+    return value;
+  } catch(e) {
+    // error reading value
+  }
 }
 
 const styles = StyleSheet.create({
@@ -156,7 +227,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#D43736",
   },
   table: {
-    flex: 1,
+    flex: 2,
     marginTop:20,
     alignItems: "center",
     justifyContent: "center",

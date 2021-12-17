@@ -1,18 +1,36 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Image, StyleSheet, TextInput, 
+TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios';
 
-const MakeAccount = () => {
+const user = {
+  id: "",
+  pw: ""
+}
+
+const MakeAccount = ({ navigation }) => {
     return (
         <View style={styles.container}>
           <View style={styles.header}>
+            <TouchableWithoutFeedback
+              onPress={ ()=>{navigation.goBack()} }
+            >
+              <Image 
+                source={require('./image/left_arrow.png')}
+                style={styles.imageButton}
+              />
+            </TouchableWithoutFeedback>
             <Text style={styles.black}>회원가입</Text>
-          </View>
-          
-          <View style={styles.title}>
-          <Image 
-              source={require('./image/logo.png')}
-              style={styles.titleImage}
-            />
+            <TouchableWithoutFeedback
+              onPress={ ()=>{navigation.popToTop()} }
+            >
+              <Image 
+                source={require('./image/x.png')}
+                style={styles.imageButton}
+              />
+            </TouchableWithoutFeedback>
           </View>
           
           <View style={styles.content}>
@@ -21,20 +39,42 @@ const MakeAccount = () => {
                 <View style={styles.rowBox}>
                   <Text style={styles.rowText}>ID</Text>
                 </View>
-                <TextInput style={styles.input}/>
+                <TextInput 
+                  style={styles.input}
+                  onChangeText={(id)=>{user.id = id}}
+                />
               </View>
               <View style={styles.row}>
                 <View style={styles.rowBox}>
                   <Text style={styles.rowText}>PW</Text>
                 </View>
-                <TextInput style={styles.input}/>
+                <TextInput 
+                  style={styles.input}
+                  onChangeText={(pw)=>{user.pw = pw}}
+                  secureTextEntry={true}
+                />
               </View>
             </View>            
           </View>
 
           <View style={styles.footer}>
-            <Text style={styles.boldWhite}>회원가입 완료</Text>
-          </View>
+            <TouchableHighlight 
+              style={styles.footer}
+              underlayColor="#e65a5a"
+              onPress={()=>{
+                //send request
+                axios.post("http://192.168.35.205:8080/signup", user)
+                .then(resp => {
+                  if(resp.data.error === "null") {
+                    alert("가입되었습니다");
+                    navigation.goBack();
+                  }
+                });
+              }}
+            >
+              <Text style={styles.boldWhite}>회원가입 완료</Text>
+            </TouchableHighlight>
+            </View>
         </View>
       );
     }
@@ -61,6 +101,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor:"white",
     flex: 1,
+    backgroundColor: "white",
   },
   title: {
     flex: 2,
@@ -78,7 +119,7 @@ const styles = StyleSheet.create({
     flex: 1.1,
     flexDirection: "row",
     alignItems: "flex-end",
-    justifyContent: "center",
+    justifyContent: "space-between",
     paddingBottom: 15,
     borderBottomWidth: 0.3,
     borderBottomColor: "#DCDCDC",
@@ -116,6 +157,12 @@ const styles = StyleSheet.create({
     backgroundColor:"#D43736",
     justifyContent: "center",
     borderRadius:10,
+  },
+  imageButton: {
+    width: 30,
+    height: 30,
+    marginLeft: 15,
+    marginRight: 15,
   },
 });
 

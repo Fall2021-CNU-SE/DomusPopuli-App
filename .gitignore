@@ -10,6 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+*.swp
+
 IInterface.js
 # macOS
 .DS_Store

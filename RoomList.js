@@ -1,19 +1,33 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Image, StyleSheet, TextInput, FlatList,
+TouchableWithoutFeedback } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const RoomList = () => {
+const dat = [
+  {name: '작은방', totalScore: 80},
+  {name: '순방', totalScore: 50},
+  {name: '돌하르방', totalScore: ""},
+];
+
+const RoomList = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image 
           source={require('./image/User.png')}
           style={styles.imageButton}
+          onPress={ ()=>navigation.push(getData() ? "Mypage" : "Login") }
         />
         <Text style={styles.headerText}>방 목록</Text>
-        <Image 
-          source={require('./image/plus.png')}
-          style={styles.imageButton}
-        />
+        <TouchableWithoutFeedback
+          onPress={ ()=>navigation.push(getData() ? "RoomMade" : "Login") }
+        >
+          <Image 
+            source={require('./image/plus.png')}
+            style={styles.imageButton}
+          />
+        </TouchableWithoutFeedback>
       </View>
 
       <View style={styles.content}> 
@@ -26,27 +40,48 @@ const RoomList = () => {
             </View>
         </View>
 
-
-{/* scoll view 용우화이팅*/}
         <View style={styles.table}>
-          <View style={styles.row}>
-						<View style={styles.tableRoomName}>
-							<Text style={styles.rowText}>궁동 방</Text>
-						</View>
-						<View style={styles.tableScore}>
-							<Text style={styles.rowText}> 98 점</Text>
-						</View>
-          </View>
+          <FlatList
+            data = {dat}
+            renderItem={({item}) => (
+              <View style={styles.row}>
+                <TouchableWithoutFeedback 
+                  onPress={ () => navigation.push("WriteCheckList", item.name)}
+                > 
+                  <View style={styles.tableRoomName}>
+                    <Text style={styles.rowText}>{item.name}</Text>
+                  </View>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback 
+                  onPress={ () => navigation.push("DetailScore", item.name)}
+                >
+                  <View style={styles.tableScore}>
+                    <Text style={styles.rowText}>{item.totalScore}</Text>
+                  </View>
+                </TouchableWithoutFeedback>
+              </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </View>
       </View>
     </View>
   );
 }
 
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('jwt')
+    return value;
+  } catch(e) {
+    // error reading value
+  }
+}
+
 const styles = StyleSheet.create({
 	container: {
     flex: 1,
-    backgroundColor:"white",
+    backgroundColor: "white",
   },
   imageButton: {
     width: 30,
