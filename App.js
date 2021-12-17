@@ -17,6 +17,7 @@ import DetailScore from './DetailScore'
 const Stack = createNativeStackNavigator();
 
 const app = () => {
+  
   const [loaded, setLoaded] = useState(false);
   const timer = async() => {
     setTimeout(() => {setLoaded(true)}, 3000);

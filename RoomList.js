@@ -5,9 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const dat = [
-  {name: 'A', totalScore: 100},
-  {name: 'B', totalScore: 10},
-  {name: 'C', totalScore: 50}
+  {name: '작은방', totalScore: 80},
+  {name: '순방', totalScore: 50},
+  {name: '돌하르방', totalScore: ""},
 ];
 
 const RoomList = ({ navigation }) => {
@@ -46,14 +46,14 @@ const RoomList = ({ navigation }) => {
             renderItem={({item}) => (
               <View style={styles.row}>
                 <TouchableWithoutFeedback 
-                  onPress={ () => navigation.push("WriteCheckList", item)}
+                  onPress={ () => navigation.push("WriteCheckList", item.name)}
                 > 
                   <View style={styles.tableRoomName}>
                     <Text style={styles.rowText}>{item.name}</Text>
                   </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback 
-                  onPress={ () => navigation.push("DetailScore", item)}
+                  onPress={ () => navigation.push("DetailScore", item.name)}
                 >
                   <View style={styles.tableScore}>
                     <Text style={styles.rowText}>{item.totalScore}</Text>

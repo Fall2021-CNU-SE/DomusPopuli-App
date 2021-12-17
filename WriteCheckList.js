@@ -26,7 +26,8 @@ const keyTable = ["H0","H1","H2","B0","B1","B2","K0","K1","K2","E0","O0",
     "간혹 핸드폰이 안터지는 집이 있습니다. 핸드폰이 잘 터지나요?"
   ];
 
-const WriteCheckList = ({ navigation }) => {
+const WriteCheckList = ({ route ,navigation }) => {
+  const roomName = route.params;
   const [index, setIndex] = useState(0);
   const [checked, setChecked] = useState("none");
   return (
@@ -157,16 +158,19 @@ const WriteCheckList = ({ navigation }) => {
             setIndex(index+1)
           }
           else {
+            getData().then(token => {
             //send request
             // TODO: get house name
             // TODO: get token value
-            axios.post("http://192.168.35.205/checklist" + "/$house", {
-              token: "$token",
-              checklist: checkList,
-            }).then(resp => {
-              if(resp.data.error === "null") {
-                // Normal case
-              }
+              axios.post("http://192.168.35.205:8080/checklist" + `/${roomName}`, {
+                token: token,
+                checklist: checkList,
+              }).then(resp => {
+                if(resp.data.error === "null") {
+                  // Normal case
+                  alert("good!");
+                }
+              });
             });
           }
         }}
@@ -179,6 +183,15 @@ const WriteCheckList = ({ navigation }) => {
       </TouchableHighlight>
     </View>
   );
+}
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('jwt')
+    return value;
+  } catch(e) {
+    // error reading value
+  }
 }
 
 const styles = StyleSheet.create({

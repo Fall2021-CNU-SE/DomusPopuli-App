@@ -4,18 +4,10 @@ TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-
-const house = {
-  name: "",
-  address: "",
-  roomsize: 0,
-  deposit: 0,
-  maintenance: 0,
-  rentalfee: 0,
-  isrent: false
-}
+import axios from "axios"
 
 const RoomMade = ({ navigation }) => {
+  let house = {};
   const [checked, setChecked] = useState("none");
   return (
     <View style={styles.container}>
@@ -46,7 +38,10 @@ const RoomMade = ({ navigation }) => {
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>방 이름</Text>
             </View>
-            <TextInput style={styles.input}/>
+            <TextInput 
+              style={styles.input}
+              onChangeText={(name)=>house.name = name}
+            />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}></Text>
             </View>
@@ -58,7 +53,7 @@ const RoomMade = ({ navigation }) => {
             </View>
             <TextInput 
               style={styles.input}
-              onChangeText={(address)=>house.address}
+              onChangeText={(address)=>house.address = address}
             />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}></Text>
@@ -71,7 +66,7 @@ const RoomMade = ({ navigation }) => {
             </View>
             <TextInput 
               style={styles.input}
-              onChangeText={(roomsize)=>house.roomsize}
+              onChangeText={(roomsize)=>house.roomsize = roomsize}
             />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>평</Text>
@@ -97,7 +92,7 @@ const RoomMade = ({ navigation }) => {
             </View>
             <TextInput 
               style={styles.input}
-              onChangeText={(maintenance)=>house.maintenance}
+              onChangeText={(maintenance)=>house.maintenance = maintenance}
             />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>만원</Text>
@@ -145,7 +140,7 @@ const RoomMade = ({ navigation }) => {
             </View>
             <TextInput 
               style={styles.input}
-              onChangeText={(deposit)=>house.rentalfee}
+              onChangeText={(rentalfee)=>house.rentalfee = rentalfee}
             />
             <View style={styles.rowBox}>
               <Text style={styles.rowText}>만원</Text>
@@ -158,13 +153,30 @@ const RoomMade = ({ navigation }) => {
         style={styles.footer}
         underlayColor="#e65a5a"
         onPress={()=>{
-
+          getData().then(tok => {
+            house.token = tok;
+            console.log(house);
+            axios.post("http://192.168.35.205:8080/house", house)
+              .then(resp => {
+                if(resp.data.error==="null") {
+                }
+              }).catch(e => {console.log(e)});
+          });
         }}
       >
         <Text style={styles.boldWhite}>확인</Text>
       </TouchableHighlight>
     </View>
   );
+}
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('jwt')
+    return value;
+  } catch(e) {
+    // error reading value
+  }
 }
 
 const styles = StyleSheet.create({
